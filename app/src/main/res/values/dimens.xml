@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Height of list item -->
+    <dimen name="list_item_height">64dp</dimen>
+
+    <!-- Layout width of list item -->
+    <dimen name="list_layout_width">64dp</dimen>
+
+    <!-- List item in list_item.xml -->
+    <dimen name="image_padding_left">8dp</dimen>
+    <dimen name="image_padding_top">4dp</dimen>
+    <dimen name="text_view_layout_height">32dp</dimen>
+    <dimen name="text_view_padding">16dp</dimen>
+    <dimen name="linear_padding_left">8dp</dimen>
+
+    <!-- Layout margin -->
+    <dimen name="layout_margin_left">16dp</dimen>
+    <dimen name="layout_margin_right">16dp</dimen>
+    <dimen name="layout_margin_top">16dp</dimen>
+    <dimen name="layout_margin_bottom">16dp</dimen>
+
+    <!-- Layout width of ImageView in the activity_playlists.xml -->
+    <dimen name="playlist_image_layout_width">66dp</dimen>
+
+    <!-- Column width of grid view -->
+    <dimen name="column_width">170dp</dimen>
+
+    <!-- Horizontal spacing of grid view -->
+    <dimen name="horizontal_spacing">10dp</dimen>
+
+    <!-- Vertical spacing of grid view -->
+    <dimen name="verticalSpacing">10dp</dimen>
+
+    <!-- ImageView in activity_nowplaying.xml-->
+    <dimen name="layout_width">260dp</dimen>
+    <dimen name="layout_height">260dp</dimen>
+    <dimen name="layout_margin_48">48dp</dimen>
+
+    <!-- ImageButton in activity_nowplaing.xml -->
+    <dimen name="layout_margin_8">8dp</dimen>
+    <dimen name="layout_width_0">0dp</dimen>
+    <dimen name="layout_margin_4">4dp</dimen>
+
+    <!-- LinearLayout in activity_nowplaying.xml -->
+    <dimen name="padding_50">50dp</dimen>
+
+    <!-- Grid item in grid_item.xml -->
+    <dimen name="grid_layout_width">170dp</dimen>
+    <dimen name="grid_layout_height">170dp</dimen>
+    <dimen name="grid_layout_margin_bottom">4dp</dimen>
+    <dimen name="grid_layout_margin_left">8dp</dimen>
+    <dimen name="grid_layout_margin_right">8dp</dimen>
+    <dimen name="grid_padding">5dp</dimen>
+    <dimen name="grid_layout_height_230">230dp</dimen>
+
+</resources>

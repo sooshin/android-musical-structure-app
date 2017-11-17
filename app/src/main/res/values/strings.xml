@@ -1,0 +1,88 @@
+<resources>
+    <string name="app_name">MusicPlayer</string>
+
+    <string name="category_playlists">Playlists</string>
+
+    <string name="category_artists">Artists</string>
+
+    <string name="category_songs">Songs</string>
+
+    <string name="albums">Albums</string>
+
+    <string name="now_playing">Now Playing</string>
+
+    <!-- Strings in the activity_playlists.xml -->
+    <string name="all_musics">Just Heard</string>
+    <string name="favorite">Favorite</string>
+    <string name="my_playlist">My Playlist</string>
+
+    <!-- Image description -->
+    <string name="favorite_des">Favorite button</string>
+    <string name="fast_rewind_des">Fast rewind button</string>
+    <string name="pause_des">Pause button</string>
+    <string name="fast_forward_des">Fast forward button</string>
+    <string name="background_des">Background image</string>
+    <string name="headset_des">Headset image</string>
+    <string name="favorite_border_big_des">Favorite image</string>
+    <string name="library_music_des">My Playlist image</string>
+
+    <!-- Strings in NowplayingActivity.java -->
+    <string name="added_to_favorite">Added to your Favorite</string>
+
+    <!-- content description for imageView in the list_item.xml -->
+    <string name="album_image">Album image</string>
+
+    <!-- Artist's name -->
+    <string name="ed_sheeran">Ed Sheeran</string>
+    <string name="camila_cabello">Camila Cabello</string>
+    <string name="imagine_dragones">Imagine Dragones</string>
+    <string name="taylor_swift">Taylor Swift</string>
+    <string name="maroon_5">Maroon 5</string>
+    <string name="portugal_the_man">Portugal.The Man</string>
+    <string name="sam_smith">Sam Smith</string>
+    <string name="halsey">Halsey</string>
+
+    <!-- The name of songs -->
+    <string name="shape_of_you">Shape of You</string>
+    <string name="perfect">Perfect</string>
+    <string name="nina">Nina</string>
+    <string name="havana">Havana</string>
+    <string name="thunder">Thunder</string>
+    <string name="call_it_what_you_want">Call It What You Want</string>
+    <string name="what_lovers_do">What Lovers Do (feat.SZA)</string>
+    <string name="feel_it_still">Feel It Still</string>
+    <string name="too_good_at_goodbyes">Too Good at Goodbyes</string>
+    <string name="bad_at_love">Bad at Love</string>
+    <string name="galway_girl">Galway Girl</string>
+    <string name="happier">Happier</string>
+    <string name="new_man">New Man</string>
+    <string name="hearts_do_not_break_around_here">Hearts Don\'t Break Around Here</string>
+
+    <!-- The length of the songs -->
+    <string name="length_shape_of_you">3:53</string>
+    <string name="length_perfect">4:23</string>
+    <string name="length_nina">3:40</string>
+    <string name="length_havana">3:36</string>
+    <string name="length_thunder">3:07</string>
+    <string name="length_call_it_what_you_want">3:23</string>
+    <string name="length_what_lovers_do">3:19</string>
+    <string name="length_feel_it_still">2:43</string>
+    <string name="length_too_good_at_goodbyes">3:21</string>
+    <string name="length_bad_at_love">3:01</string>
+    <string name="length_galway_girl">2:50</string>
+    <string name="length_happier">3:27</string>
+    <string name="length_new_man">3:09</string>
+    <string name="length_hearts_do_not_break_around_here">4:08</string>
+
+    <!-- Album name -->
+    <string name="divide">÷</string>
+    <string name="x">X</string>
+    <string name="havana_album">Havana</string>
+    <string name="evolve">Evolve</string>
+    <string name="reputation">reputation</string>
+    <string name="red_pill_blues">Red Pill Blues</string>
+    <string name="woodstock">Woodstock</string>
+    <string name="the_thrill_of_it_all">The Thrill of It All</string>
+    <string name="hopeless_fountain_kingdom">hopeless fountain kingdom</string>
+
+</resources>

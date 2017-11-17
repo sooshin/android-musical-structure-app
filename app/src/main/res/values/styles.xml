@@ -1,0 +1,101 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <!-- Style for a tab that displays a category name -->
+    <style name="CategoryTab" parent="Widget.Design.TabLayout">
+        <item name="tabIndicatorColor">@color/tab_indicator_color</item>
+        <item name="tabSelectedTextColor">@color/tab_selected_text_color</item>
+        <item name="tabBackground">@color/tab_background_color</item>
+        <item name="tabTextAppearance">@style/CategoryTabTextAppearance</item>
+    </style>
+
+    <!-- Text appearance style for a category tab -->
+    <style name="CategoryTabTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="android:textColor">@color/tab_text_color</item>
+    </style>
+
+    <!-- Style for a TextView in the activity_nowplaying.xml -->
+    <style name="NowPlayingText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_marginLeft">@dimen/layout_margin_left</item>
+        <item name="android:layout_marginRight">@dimen/layout_margin_right</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <!-- Style for an ImageButton in the activity_nowplaying.xml -->
+    <style name="ImageButtonStyle">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@null</item>
+    </style>
+
+    <!-- LinearLayout style in the activity_playlists.xml -->
+    <style name="PlaylistLinearLayoutStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">@dimen/layout_margin_left</item>
+        <item name="android:layout_marginRight">@dimen/layout_margin_right</item>
+        <item name="android:layout_marginTop">@dimen/layout_margin_top</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <!-- Style for a TextView in the activity_playlists.xml -->
+    <style name="PlaylistsText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">66dp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:textAppearance">?android:textAppearanceLarge</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <!-- Style for a favorite ImageButton in the activity_playlists.xml -->
+    <style name="ImageButtonStyle_favorite">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_marginBottom">@dimen/layout_margin_4</item>
+        <item name="android:layout_marginTop">@dimen/layout_margin_8</item>
+        <item name="android:background">@null</item>
+    </style>
+
+    <!-- Style for a TextView in list_item.xml -->
+    <style name="ListItemTextViewStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">@dimen/text_view_layout_height</item>
+        <item name="android:gravity">top</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:textAppearance">?android:textAppearanceSmall</item>
+    </style>
+
+    <!-- Style for an ImageView in list_item.xml -->
+    <style name="ListItemImageViewStyle">
+        <item name="android:layout_width">@dimen/list_layout_width</item>
+        <item name="android:layout_height">@dimen/list_item_height</item>
+        <item name="android:paddingBottom">@dimen/image_padding_top</item>
+        <item name="android:paddingLeft">@dimen/image_padding_left</item>
+        <item name="android:paddingRight">@dimen/image_padding_left</item>
+        <item name="android:paddingTop">@dimen/image_padding_top</item>
+    </style>
+
+    <!-- Style for an ImageView in the activity_nowplaying.xml -->
+    <style name="NowPlayingImageViewStyle">
+        <item name="android:layout_width">@dimen/layout_width</item>
+        <item name="android:layout_height">@dimen/layout_height</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_marginBottom">@dimen/layout_margin_bottom</item>
+        <item name="android:layout_marginLeft">@dimen/layout_margin_48</item>
+        <item name="android:layout_marginRight">@dimen/layout_margin_48</item>
+    </style>
+
+</resources>

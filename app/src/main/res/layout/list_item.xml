@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="@dimen/list_item_height"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/image"
+        style="@style/ListItemImageViewStyle"
+        android:contentDescription="@string/album_image"
+        android:scaleType="centerCrop" />
+
+    <LinearLayout
+        android:id="@+id/text_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/linear_padding_left">
+
+        <TextView
+            android:id="@+id/song_title_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/text_view_layout_height"
+            android:fontFamily="sans-serif"
+            android:gravity="bottom"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:textColor="@android:color/white"
+            tools:text="Song Title" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/artist_text_view"
+                style="@style/ListItemTextViewStyle"
+                android:textColor="@color/artist_name_color"
+                tools:text="Artist" />
+
+            <TextView
+                android:id="@+id/song_length_text_view"
+                style="@style/ListItemTextViewStyle"
+                android:paddingLeft="@dimen/text_view_padding"
+                android:paddingRight="@dimen/text_view_padding"
+                android:textColor="@color/song_length_color"
+                tools:text="song length" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
