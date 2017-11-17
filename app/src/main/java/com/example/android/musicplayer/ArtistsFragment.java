@@ -63,7 +63,7 @@ public class ArtistsFragment extends Fragment {
                 Intent albumsIntent = new Intent(getActivity(), AlbumsActivity.class);
 
                 // Pass artist name value to {@link AlbumsActivity}
-                albumsIntent.putExtra("ArtistName", song.getArtistName());
+                albumsIntent.putExtra(getString(R.string.artist_name), song.getArtistName());
 
                 // Start the new activity
                 startActivity(albumsIntent);

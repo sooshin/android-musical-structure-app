@@ -46,7 +46,7 @@ public class AlbumsActivity extends AppCompatActivity {
         Intent artistsIntent = getIntent();
 
         // Get an artist name from the intent
-        String artistName = artistsIntent.getStringExtra("ArtistName");
+        String artistName = artistsIntent.getStringExtra(getString(R.string.artist_name));
 
         // Create an list of songs to search for album names that match the artist's name
         final ArrayList<Song> artistNameResult = new ArrayList<Song>();
@@ -85,7 +85,7 @@ public class AlbumsActivity extends AppCompatActivity {
                 Intent songsIntent = new Intent(AlbumsActivity.this, SongsActivity.class);
 
                 // Pass album name value to {@link SongsActivity}
-                songsIntent.putExtra("AlbumName", song.getAlbumName());
+                songsIntent.putExtra(getString(R.string.album_name), song.getAlbumName());
 
                 // Start the new activity
                 startActivity(songsIntent);

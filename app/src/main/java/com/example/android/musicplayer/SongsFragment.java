@@ -81,10 +81,10 @@ public class SongsFragment extends Fragment {
                 Intent nowIntent = new Intent(getActivity(), NowplayingActivity.class);
 
                 // Pass value to {@link NowplayingActivity}
-                nowIntent.putExtra("SongTitle", song.getSongTitle());
-                nowIntent.putExtra("ArtistName", song.getArtistName());
-                nowIntent.putExtra("SongLength", song.getSongLength());
-                nowIntent.putExtra("AlbumArtId", song.getAlbumArtId());
+                nowIntent.putExtra(getString(R.string.song_title), song.getSongTitle());
+                nowIntent.putExtra(getString(R.string.artist_name), song.getArtistName());
+                nowIntent.putExtra(getString(R.string.song_length), song.getSongLength());
+                nowIntent.putExtra(getString(R.string.album_art_id), song.getAlbumArtId());
 
                 // Start the new activity
                 startActivity(nowIntent);

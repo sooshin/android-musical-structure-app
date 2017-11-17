@@ -85,4 +85,14 @@
     <string name="the_thrill_of_it_all">The Thrill of It All</string>
     <string name="hopeless_fountain_kingdom">hopeless fountain kingdom</string>
 
+    <!--Strings in java file -->
+    <string name="artist_name">ArtistName</string>
+    <string name="album_name">AlbumName</string>
+    <string name="song_title">SongTitle</string>
+    <string name="song_length">SongLength</string>
+    <string name="album_art_id">AlbumArtId</string>
+    <string name="favorite_song_title">FavoriteSongTitle</string>
+    <string name="favorite_artist_name">FavoriteArtistName</string>
+    <string name="favorite_song_length">FavoriteSongLength</string>
+    <string name="favorite_album_art_id">FavoriteAlbumArtId</string>
 </resources>

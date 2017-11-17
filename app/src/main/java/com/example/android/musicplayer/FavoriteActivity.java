@@ -23,10 +23,10 @@ public class FavoriteActivity extends AppCompatActivity {
         // When user tap the favorite image button, get data from NowplayingActivity.
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(FavoriteActivity.this);
 
-        String songTitle = prefs.getString("FavoriteSongTitle", "");
-        String artistName = prefs.getString("FavoriteArtistName", "");
-        String songLength = prefs.getString("FavoriteSongLength", "");
-        int albumArtId = prefs.getInt("FavoriteAlbumArtId", -1);
+        String songTitle = prefs.getString(getString(R.string.favorite_song_title), "");
+        String artistName = prefs.getString(getString(R.string.favorite_artist_name), "");
+        String songLength = prefs.getString(getString(R.string.favorite_song_length), "");
+        int albumArtId = prefs.getInt(getString(R.string.favorite_album_art_id), -1);
 
         //Create an list of favorite songs
         ArrayList<Song> favoriteSongs = new ArrayList<Song>();

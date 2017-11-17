@@ -37,13 +37,13 @@ public class NowplayingActivity extends AppCompatActivity {
         Intent songsIntent = getIntent();
 
         // Get a song title from the intent
-        songTitle = songsIntent.getStringExtra("SongTitle");
+        songTitle = songsIntent.getStringExtra(getString(R.string.song_title));
         // Get an artist name from the intent
-        artistName = songsIntent.getStringExtra("ArtistName");
+        artistName = songsIntent.getStringExtra(getString(R.string.artist_name));
         // Get a song length from the intent
-        songLength = songsIntent.getStringExtra("SongLength");
+        songLength = songsIntent.getStringExtra(getString(R.string.song_length));
         // Get a album art Id from the intent
-        albumArtId = songsIntent.getIntExtra("AlbumArtId", -1);
+        albumArtId = songsIntent.getIntExtra(getString(R.string.album_art_id), -1);
 
         // Find the View that shows song title
         TextView songTitleTextView = (TextView) findViewById(R.id.song_title);
@@ -87,13 +87,13 @@ public class NowplayingActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = prefs.edit();
 
                 // Store string songTitle value
-                editor.putString("FavoriteSongTitle", songTitle);
+                editor.putString(getString(R.string.favorite_song_title), songTitle);
                 // Store string artistName value
-                editor.putString("FavoriteArtistName", artistName);
+                editor.putString(getString(R.string.favorite_artist_name), artistName);
                 // Store string songLength value
-                editor.putString("FavoriteSongLength", songLength);
+                editor.putString(getString(R.string.favorite_song_length), songLength);
                 // Store int albumArtId value
-                editor.putInt("FavoriteAlbumArtId", albumArtId);
+                editor.putInt(getString(R.string.favorite_album_art_id), albumArtId);
 
                 // Save the changes into SharedPreferences
                 editor.commit();
