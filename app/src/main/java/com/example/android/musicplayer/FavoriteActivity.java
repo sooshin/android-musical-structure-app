@@ -1,10 +1,13 @@
 package com.example.android.musicplayer;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -30,7 +33,7 @@ public class FavoriteActivity extends AppCompatActivity {
         int albumArtId = prefs.getInt(getString(R.string.favorite_album_art_id), -1);
 
         //Create an list of favorite songs
-        ArrayList<Song> favoriteSongs = new ArrayList<Song>();
+        final ArrayList<Song> favoriteSongs = new ArrayList<Song>();
 
         // Add new song based on the data from NowplayingActivity.
         favoriteSongs.add(new Song(songTitle,artistName, songLength, albumArtId));
@@ -50,6 +53,27 @@ public class FavoriteActivity extends AppCompatActivity {
             // {@link ListView} will display list items for each {@link Song} in the list.
             listView.setAdapter(songAdapter);
         }
+
+        // Set a click listener on listView
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                // Get the {@link Song} object at the given position the user clicked on
+                Song song = favoriteSongs.get(position);
+
+                // Create a new intent to open the {@link Nowplaying Activity}
+                Intent intent = new Intent(FavoriteActivity.this, NowplayingActivity.class);
+
+                // Pass value to {@link NowplayingActivity}
+                intent.putExtra(getString(R.string.song_title), song.getSongTitle());
+                intent.putExtra(getString(R.string.artist_name), song.getArtistName());
+                intent.putExtra(getString(R.string.song_length), song.getSongLength());
+                intent.putExtra(getString(R.string.album_art_id), song.getAlbumArtId());
+
+                // Start the new activity
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
