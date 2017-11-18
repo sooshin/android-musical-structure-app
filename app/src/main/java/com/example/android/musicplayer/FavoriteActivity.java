@@ -76,6 +76,7 @@ public class FavoriteActivity extends AppCompatActivity {
         });
     }
 
+    // Move to the previous screen when up button is clicked.
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
