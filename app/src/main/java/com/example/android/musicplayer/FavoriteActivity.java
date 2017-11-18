@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -48,6 +49,17 @@ public class FavoriteActivity extends AppCompatActivity {
             // Make the {@link ListView} use the {@link SongAdapter} we created above, so that the
             // {@link ListView} will display list items for each {@link Song} in the list.
             listView.setAdapter(songAdapter);
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
 }

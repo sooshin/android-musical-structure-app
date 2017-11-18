@@ -19,18 +19,30 @@
         <activity
             android:name=".AlbumsActivity"
             android:label="@string/albums">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.android.musicplayer.MainActivity" />
         </activity>
         <activity
             android:name=".NowplayingActivity"
             android:label="@string/now_playing">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.android.musicplayer.MainActivity" />
         </activity>
         <activity
             android:name=".SongsActivity"
             android:label="@string/category_songs">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.android.musicplayer.MainActivity" />
         </activity>
         <activity
             android:name=".FavoriteActivity"
             android:label="@string/favorite">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.android.musicplayer.MainActivity"/>
         </activity>
     </application>
 
