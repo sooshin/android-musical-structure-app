@@ -97,7 +97,7 @@ public class NowplayingActivity extends AppCompatActivity {
                 editor.putInt(getString(R.string.favorite_album_art_id), albumArtId);
 
                 // Save the changes into SharedPreferences
-                editor.commit();
+                editor.apply();
 
                 // Make Toast message that shows the song is added to Favorite
                 Toast.makeText(NowplayingActivity.this, getString(R.string.added_to_favorite),Toast.LENGTH_SHORT).show();
