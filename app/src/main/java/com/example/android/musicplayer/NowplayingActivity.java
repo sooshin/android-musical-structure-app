@@ -47,22 +47,22 @@ public class NowplayingActivity extends AppCompatActivity {
         albumArtId = songsIntent.getIntExtra(getString(R.string.album_art_id), -1);
 
         // Find the View that shows song title
-        TextView songTitleTextView = (TextView) findViewById(R.id.song_title);
+        TextView songTitleTextView = findViewById(R.id.song_title);
         // Set the songTitle on that TextView
         songTitleTextView.setText(songTitle);
 
         // Find the View that shows artist name
-        TextView artistNameTextView = (TextView) findViewById(R.id.artist_name);
+        TextView artistNameTextView = findViewById(R.id.artist_name);
         // Set the artistName on that TextView
         artistNameTextView.setText(artistName);
 
         // Find the View that shows the length of the song
-        TextView songLengthTextView =(TextView) findViewById(R.id.song_length);
+        TextView songLengthTextView = findViewById(R.id.song_length);
         // Set the songLength on that TextView
         songLengthTextView.setText(songLength);
 
         // Find the ImageView that shows album art image
-        ImageView imageView = (ImageView) findViewById(R.id.image);
+        ImageView imageView = findViewById(R.id.image);
         // Check if an album art is provided for this song or not
         if (albumArtId != -1) {
             // If an album art is available, display the provided album art based on the resource ID
@@ -73,7 +73,7 @@ public class NowplayingActivity extends AppCompatActivity {
         }
 
         // Find the ImageButton and set image resource to show ic_favorite_border
-        favoriteImageButton = (ImageButton) findViewById(R.id.favorite_image_button);
+        favoriteImageButton = findViewById(R.id.favorite_image_button);
         favoriteImageButton.setImageResource(R.drawable.ic_favorite_border);
 
         prefs = PreferenceManager.getDefaultSharedPreferences(NowplayingActivity.this);

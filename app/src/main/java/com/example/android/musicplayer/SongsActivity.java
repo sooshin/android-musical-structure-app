@@ -77,7 +77,7 @@ public class SongsActivity extends AppCompatActivity{
         SongAdapter songAdapter = new SongAdapter(this, albumNameResult);
 
         // Find the {@link ListView} object in the view hierarchy of the {@link Activity}.
-        ListView listView = (ListView) findViewById(R.id.list);
+        ListView listView = findViewById(R.id.list);
 
         // Make the {@link ListView} use the {@link SongAdapter} we created above
         listView.setAdapter(songAdapter);

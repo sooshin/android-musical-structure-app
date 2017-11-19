@@ -42,25 +42,25 @@ public class SongAdapter extends ArrayAdapter<Song> {
         Song currentSong = getItem(position);
 
         // Find the TextView in the list_item.xml layout with the ID song_title_text_view
-        TextView songTitleTextView = (TextView) listItemView.findViewById(R.id.song_title_text_view);
+        TextView songTitleTextView = listItemView.findViewById(R.id.song_title_text_view);
         // Get the song title from the current Song object and
         // set this text on the song title TextView
         songTitleTextView.setText(currentSong.getSongTitle());
 
         // Find the TextView in the list_item.xml layout with the ID artist_text_view
-        TextView artistTextView = (TextView) listItemView.findViewById(R.id.artist_text_view);
+        TextView artistTextView = listItemView.findViewById(R.id.artist_text_view);
         // Get the artist name from the current Song object and
         // set this text on the Artist TextView
         artistTextView.setText(currentSong.getArtistName());
 
         // Find the TextView in the list_item.xml layout with the ID song_length_text_view
-        TextView songLengthTextView = (TextView) listItemView.findViewById(R.id.song_length_text_view);
+        TextView songLengthTextView = listItemView.findViewById(R.id.song_length_text_view);
         // Get the song length from the current Song object and
         // set this text on the song length TextView
         songLengthTextView.setText(currentSong.getSongLength());
 
         // Find the ImageView in the list_item.xml layout with the ID image
-        ImageView imageView = (ImageView) listItemView.findViewById(R.id.image);
+        ImageView imageView = listItemView.findViewById(R.id.image);
         // Check if an album art is provided for this song or not
         if(currentSong.hasAlbumArtId()) {
             // If an album art is available, display the provided album art based on the resource ID

@@ -42,7 +42,7 @@ public class ArtistsFragment extends Fragment {
         AlbumAdapter albumAdapter = new AlbumAdapter(getActivity(), songs);
 
         // Find the {@link GridView} object in the view hierarchy of the {@link fragment}.
-        GridView gridView = (GridView) rootView.findViewById(R.id.gridview);
+        GridView gridView = rootView.findViewById(R.id.gridview);
 
         // Make the {@link GridView} use the {@link AlbumAdapter} we created above, so that the
         // {@link GridView} will display grid items for each {@link Song} in the list.

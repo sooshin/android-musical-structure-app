@@ -25,12 +25,12 @@ public class PlaylistsFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.activity_playlists, container, false);
 
         // Find the View that shows the All Musics
-        TextView allMusicsTextView = (TextView) rootView.findViewById(R.id.all_musics_text);
+        TextView allMusicsTextView = rootView.findViewById(R.id.all_musics_text);
 
 
 
         // Find the View that shows the Favorite
-        TextView favoriteTextView = (TextView) rootView.findViewById(R.id.favorite_text);
+        TextView favoriteTextView = rootView.findViewById(R.id.favorite_text);
 
         // Set a click listener on favoriteTextView
         favoriteTextView.setOnClickListener(new View.OnClickListener() {

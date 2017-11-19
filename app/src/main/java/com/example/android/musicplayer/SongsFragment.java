@@ -62,7 +62,7 @@ public class SongsFragment extends Fragment {
         SongAdapter songAdapter = new SongAdapter(getActivity(), songs);
 
         // Find the {@link ListView} object in the view hierarchy of the {@link Activity}.
-        ListView listView = (ListView) rootView.findViewById(R.id.list);
+        ListView listView = rootView.findViewById(R.id.list);
 
         // Make the {@link ListView} use the {@link SongAdapter} we created above
         listView.setAdapter(songAdapter);

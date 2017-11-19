@@ -39,7 +39,7 @@ public class FavoriteActivity extends AppCompatActivity {
         favoriteSongs.add(new Song(songTitle,artistName, songLength, albumArtId));
 
         // Find the {@link ListView} object in the view hierarchy of the {@link Activity}.
-        ListView listView = (ListView) findViewById(R.id.list);
+        ListView listView = findViewById(R.id.list);
 
         // Set the background resource
         listView.setBackgroundResource(R.drawable.background);

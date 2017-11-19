@@ -48,7 +48,7 @@ public class AlbumAdapter extends ArrayAdapter<Song> {
         Song currentSong = getItem(position);
 
         // Find the ImageView in the grid_item.xml layout with the ID image
-        ImageView imageView = (ImageView) gridItemView.findViewById(R.id.image);
+        ImageView imageView = gridItemView.findViewById(R.id.image);
         // Check if an album art is provided for this song or not
         if(currentSong.hasAlbumArtId()) {
             // If an album art is available, display the provided album art based on the resource ID
@@ -60,7 +60,7 @@ public class AlbumAdapter extends ArrayAdapter<Song> {
         }
 
         // Find the TextView in the grid_item.xml layout with the ID album_name_text_view
-        TextView albumNameTextView = (TextView) gridItemView.findViewById(R.id.album_name_text_view);
+        TextView albumNameTextView = gridItemView.findViewById(R.id.album_name_text_view);
 
         // No album name is needed in the ArtistsFragment.
         if(currentSong.getAlbumName() == null){
@@ -75,7 +75,7 @@ public class AlbumAdapter extends ArrayAdapter<Song> {
         }
 
         // Find the TextView in the grid_item.xml layout with the ID artist_text_view
-        TextView artistTextView = (TextView) gridItemView.findViewById(R.id.artist_text_view);
+        TextView artistTextView = gridItemView.findViewById(R.id.artist_text_view);
         // Get the artist name from the current Song object and
         // set this text on the artist TextView
         artistTextView.setText(currentSong.getArtistName());

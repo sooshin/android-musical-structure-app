@@ -65,7 +65,7 @@ public class AlbumsActivity extends AppCompatActivity {
         // Find the {@link GridView} object in the view hierarchy of the {@link Activity}.
         // There should be a {@link GridView} with the view ID called gridview, which is declared in the
         // activity_albums.xml layout file.
-        GridView gridView = (GridView) findViewById(R.id.gridview);
+        GridView gridView = findViewById(R.id.gridview);
 
         // Make the {@link GridView} use the {@link AlbumAdapter} we created above, so that the
         // {@link GridView} will display grid items for each {@link Song} in the list.
