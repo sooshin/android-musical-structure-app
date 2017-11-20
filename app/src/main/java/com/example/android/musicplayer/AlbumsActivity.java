@@ -92,6 +92,10 @@ public class AlbumsActivity extends AppCompatActivity {
                 startActivity(songsIntent);
             }
         });
+
+        // Navigate with the app icon in the action bar
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
 
     // Move to the previous screen when up button is clicked.

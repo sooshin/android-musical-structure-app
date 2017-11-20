@@ -103,6 +103,10 @@ public class NowplayingActivity extends AppCompatActivity {
                 Toast.makeText(NowplayingActivity.this, getString(R.string.added_to_favorite),Toast.LENGTH_SHORT).show();
             }
         });
+
+        // Navigate with the app icon in the action bar
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
 
     // Move to the previous screen when up button is clicked.

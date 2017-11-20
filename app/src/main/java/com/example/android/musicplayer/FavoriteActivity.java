@@ -74,6 +74,10 @@ public class FavoriteActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        // Navigate with the app icon in the action bar
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
 
     // Move to the previous screen when up button is clicked.
