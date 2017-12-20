@@ -1,9 +1,15 @@
-package com.example.android.musicplayer;
+package com.example.android.musicplayer.adapter;
 
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+
+import com.example.android.musicplayer.R;
+import com.example.android.musicplayer.Song;
+import com.example.android.musicplayer.fragment.ArtistsFragment;
+import com.example.android.musicplayer.fragment.PlaylistsFragment;
+import com.example.android.musicplayer.fragment.SongsFragment;
 
 /**
  * {@link CategoryAdapter} is a {@link FragmentPagerAdapter} that can provide the layout for

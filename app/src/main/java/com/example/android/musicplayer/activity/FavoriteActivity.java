@@ -1,4 +1,4 @@
-package com.example.android.musicplayer;
+package com.example.android.musicplayer.activity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -9,6 +9,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+
+import com.example.android.musicplayer.R;
+import com.example.android.musicplayer.Song;
+import com.example.android.musicplayer.adapter.SongAdapter;
 
 import java.util.ArrayList;
 

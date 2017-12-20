@@ -83,42 +83,42 @@ public class Song {
     /**
      * Get the song title of the song.
      */
-    String getSongTitle() {
+    public String getSongTitle() {
         return mSongTitle;
     }
 
     /**
      * Get the artist's name of the song.
      */
-    String getArtistName() {
+    public String getArtistName() {
         return mArtistName;
     }
 
     /**
      * Get the length of the song.
      */
-    String getSongLength() {
+    public String getSongLength() {
         return mSongLength;
     }
 
     /**
      * Get the album art of the song.
      */
-    int getAlbumArtId() {
+    public int getAlbumArtId() {
         return mAlbumArtId;
     }
 
     /**
      * Returns whether or not there is an Album art for this song.
      */
-    boolean hasAlbumArtId(){
+    public boolean hasAlbumArtId(){
         return mAlbumArtId != NO_IMAGE_PROVIDED;
     }
 
     /**
      * Get the album name of the song.
      */
-    String getAlbumName() {
+    public String getAlbumName() {
         return mAlbumName;
     }
 

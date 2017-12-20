@@ -1,4 +1,4 @@
-package com.example.android.musicplayer;
+package com.example.android.musicplayer.fragment;
 
 
 import android.content.Intent;
@@ -9,6 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+
+import com.example.android.musicplayer.activity.NowplayingActivity;
+import com.example.android.musicplayer.R;
+import com.example.android.musicplayer.Song;
+import com.example.android.musicplayer.adapter.SongAdapter;
 
 import java.util.ArrayList;
 

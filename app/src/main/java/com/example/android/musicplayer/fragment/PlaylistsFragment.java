@@ -1,5 +1,5 @@
 
-package com.example.android.musicplayer;
+package com.example.android.musicplayer.fragment;
 
 
 import android.content.Intent;
@@ -9,6 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.example.android.musicplayer.activity.FavoriteActivity;
+import com.example.android.musicplayer.R;
 
 /**
  * A simple {@link Fragment} subclass.

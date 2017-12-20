@@ -1,4 +1,4 @@
-package com.example.android.musicplayer;
+package com.example.android.musicplayer.activity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -11,6 +11,9 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.android.musicplayer.R;
+import com.example.android.musicplayer.fragment.SongsFragment;
 
 /**
  * The NowplayingActivity is the activity that appears when a list item is clicked on a {@link SongsActivity}

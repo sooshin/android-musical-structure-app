@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -17,19 +17,19 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".AlbumsActivity"
+            android:name=".activity.AlbumsActivity"
             android:label="@string/albums">
         </activity>
         <activity
-            android:name=".NowplayingActivity"
+            android:name=".activity.NowplayingActivity"
             android:label="@string/now_playing">
         </activity>
         <activity
-            android:name=".SongsActivity"
+            android:name=".activity.SongsActivity"
             android:label="@string/category_songs">
         </activity>
         <activity
-            android:name=".FavoriteActivity"
+            android:name=".activity.FavoriteActivity"
             android:label="@string/favorite">
         </activity>
     </application>

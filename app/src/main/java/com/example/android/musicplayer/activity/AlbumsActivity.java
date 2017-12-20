@@ -1,4 +1,4 @@
-package com.example.android.musicplayer;
+package com.example.android.musicplayer.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +7,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
+
+import com.example.android.musicplayer.R;
+import com.example.android.musicplayer.Song;
+import com.example.android.musicplayer.adapter.AlbumAdapter;
+import com.example.android.musicplayer.fragment.ArtistsFragment;
 
 import java.util.ArrayList;
 
