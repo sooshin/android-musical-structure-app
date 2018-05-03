@@ -1,108 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/background"
-    tools:context="com.example.android.musicplayer.activity.NowplayingActivity">
+    android:layout_height="wrap_content"
+    android:background="@drawable/background">
 
-    <ScrollView
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
-        <LinearLayout
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="@dimen/layout_width"
+            android:layout_height="@dimen/layout_height"
+            android:contentDescription="@string/album_image"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/favorite_image_button"
+            android:layout_width="@dimen/favorite_button_size"
+            android:layout_height="@dimen/favorite_button_size"
+            android:layout_marginTop="@dimen/layout_margin_24"
+            android:background="@null"
+            android:contentDescription="@string/favorite_des"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/image" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/layout_margin_left"
+            android:layout_marginTop="@dimen/layout_margin_4"
+            android:textColor="@color/song_length_color"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/favorite_image_button"
+            tools:text="0:00" />
+
+        <TextView
+            android:id="@+id/song_length"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/layout_margin_right"
+            android:layout_marginTop="@dimen/layout_margin_4"
+            android:textColor="@color/song_length_color"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/favorite_image_button"
+            tools:text="3:00" />
+
+        <SeekBar
+            android:id="@+id/seek_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:max="100"
+            android:progress="0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/song_length" />
 
-            <ImageView
-                android:id="@+id/image"
-                style="@style/NowPlayingImageViewStyle"
-                android:contentDescription="@string/album_image"
-                android:scaleType="centerCrop" />
+        <TextView
+            android:id="@+id/song_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/layout_margin_right"
+            android:layout_marginStart="@dimen/layout_margin_left"
+            android:layout_marginTop="@dimen/layout_margin_8"
+            android:ellipsize="end"
+            android:minLines="1"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:textColor="@android:color/white"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/seek_bar"
+            tools:text="song title" />
 
-            <ImageButton
-                android:id="@+id/favorite_image_button"
-                style="@style/ImageButtonStyle_favorite"
-                android:contentDescription="@string/favorite_des" />
+        <TextView
+            android:id="@+id/artist_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/layout_margin_8"
+            android:layout_marginEnd="@dimen/layout_margin_right"
+            android:layout_marginStart="@dimen/layout_margin_left"
+            android:textColor="@android:color/darker_gray"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/song_title"
+            tools:text="artist name" />
 
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+        <ImageButton
+            android:id="@+id/fast_rewind"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/horizontal_margin_l"
+            android:background="@null"
+            android:contentDescription="@string/fast_rewind_des"
+            android:src="@drawable/ic_fast_rewind"
+            app:layout_constraintBottom_toBottomOf="@+id/pause"
+            app:layout_constraintEnd_toStartOf="@+id/pause"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/pause" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/layout_margin_left"
-                    android:textColor="@color/song_length_color"
-                    tools:text="0:00" />
+        <ImageButton
+            android:id="@+id/pause"
+            android:layout_width="@dimen/layout_width_0"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/layout_margin_32"
+            android:background="@null"
+            android:contentDescription="@string/pause_des"
+            android:src="@drawable/ic_pause"
+            app:layout_constraintEnd_toStartOf="@+id/fast_forward"
+            app:layout_constraintStart_toEndOf="@+id/fast_rewind"
+            app:layout_constraintTop_toBottomOf="@+id/artist_name" />
 
-                <TextView
-                    android:id="@+id/song_length"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="@dimen/layout_margin_right"
-                    android:textColor="@color/song_length_color"
-                    tools:text="3:00" />
-            </RelativeLayout>
+        <ImageButton
+            android:id="@+id/fast_forward"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/horizontal_margin_l"
+            android:background="@null"
+            android:contentDescription="@string/fast_forward_des"
+            android:src="@drawable/ic_fast_forward"
+            app:layout_constraintBottom_toBottomOf="@+id/pause"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/pause"
+            app:layout_constraintTop_toTopOf="@+id/pause" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <SeekBar
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:max="100"
-                    android:progress="0" />
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/song_title"
-                style="@style/NowPlayingText"
-                android:layout_marginTop="@dimen/layout_margin_8"
-                android:ellipsize="end"
-                android:minLines="1"
-                android:textAppearance="?android:textAppearanceLarge"
-                android:textColor="@android:color/white"
-                tools:text="song title" />
-
-            <TextView
-                android:id="@+id/artist_name"
-                style="@style/NowPlayingText"
-                android:layout_marginBottom="@dimen/layout_margin_8"
-                android:textColor="@android:color/darker_gray"
-                tools:text="artist name" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingLeft="@dimen/padding_50"
-                android:paddingRight="@dimen/padding_50">
-
-                <ImageButton
-                    style="@style/ImageButtonStyle"
-                    android:layout_width="wrap_content"
-                    android:contentDescription="@string/fast_rewind_des"
-                    android:src="@drawable/ic_fast_rewind" />
-
-                <ImageButton
-                    style="@style/ImageButtonStyle"
-                    android:layout_width="@dimen/layout_width_0"
-                    android:contentDescription="@string/pause_des"
-                    android:src="@drawable/ic_pause" />
-
-                <ImageButton
-                    style="@style/ImageButtonStyle"
-                    android:layout_width="wrap_content"
-                    android:contentDescription="@string/fast_forward_des"
-                    android:src="@drawable/ic_fast_forward" />
-            </LinearLayout>
-
-        </LinearLayout>
-
-    </ScrollView>
-</RelativeLayout>
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>

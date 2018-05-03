@@ -40,6 +40,10 @@
     <dimen name="layout_margin_8">8dp</dimen>
     <dimen name="layout_width_0">0dp</dimen>
     <dimen name="layout_margin_4">4dp</dimen>
+    <dimen name="layout_margin_24">24dp</dimen>
+    <dimen name="layout_margin_32">32dp</dimen>
+    <dimen name="horizontal_margin_l">64dp</dimen>
+    <dimen name="favorite_button_size">24dp</dimen>
 
     <!-- LinearLayout in activity_nowplaying.xml -->
     <dimen name="padding_50">50dp</dimen>
