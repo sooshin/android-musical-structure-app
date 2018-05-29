@@ -29,6 +29,7 @@ public class NowplayingActivity extends AppCompatActivity {
     private int albumArtId;
 
     private ImageButton favoriteImageButton;
+    private boolean full = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,8 +86,19 @@ public class NowplayingActivity extends AppCompatActivity {
         favoriteImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Change image resource when favorite image button is clicked
-                favoriteImageButton.setImageResource(R.drawable.ic_favorite_white_24dp);
+                // Change image resource every time favorite image button is clicked
+                if (!full) {
+                    favoriteImageButton.setImageResource(R.drawable.ic_favorite_white_24dp);
+                    full = true;
+                    // Make Toast message that shows the song is added to Favorite
+                    Toast.makeText(NowplayingActivity.this, getString(R.string.added_to_favorite),Toast.LENGTH_SHORT).show();
+
+                } else {
+                    favoriteImageButton.setImageResource(R.drawable.ic_favorite_border);
+                    full = false;
+                    // Make Toast message that shows the song is removed from Favorite
+                    Toast.makeText(NowplayingActivity.this, getString(R.string.removed_from_favorite), Toast.LENGTH_SHORT).show();
+                }
 
                 SharedPreferences.Editor editor = prefs.edit();
 
@@ -101,9 +113,6 @@ public class NowplayingActivity extends AppCompatActivity {
 
                 // Save the changes into SharedPreferences
                 editor.apply();
-
-                // Make Toast message that shows the song is added to Favorite
-                Toast.makeText(NowplayingActivity.this, getString(R.string.added_to_favorite),Toast.LENGTH_SHORT).show();
             }
         });
 

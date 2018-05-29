@@ -28,6 +28,7 @@
 
     <!-- Strings in NowplayingActivity.java -->
     <string name="added_to_favorite">Added to your Favorite</string>
+    <string name="removed_from_favorite">Removed from your Favorite</string>
 
     <!-- content description for imageView in the list_item.xml -->
     <string name="album_image">Album image</string>
