@@ -39,5 +39,28 @@ public class SongEntry {
         this.albumArtId = albumArtId;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+   public String getSongTitle() {
+        return songTitle;
+   }
+
+    public String getArtistName() {
+        return artistName;
+    }
+
+   public String getSongLength() {
+        return songLength;
+   }
+
+   public int getAlbumArtId() {
+        return albumArtId;
+   }
 
 }
