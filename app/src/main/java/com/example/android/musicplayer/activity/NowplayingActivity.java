@@ -3,7 +3,6 @@ package com.example.android.musicplayer.activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,7 +11,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.android.musicplayer.AppExecutors;
 import com.example.android.musicplayer.R;
+import com.example.android.musicplayer.database.SongDatabase;
+import com.example.android.musicplayer.database.SongEntry;
 import com.example.android.musicplayer.fragment.SongsFragment;
 
 /**
@@ -31,12 +33,17 @@ public class NowplayingActivity extends AppCompatActivity {
     private ImageButton favoriteImageButton;
     private boolean full = false;
 
+    /** SongDatabase variable */
+    private SongDatabase mDb;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         // Set the content of the activity to use the activity_nowplaying.xml layout file
         setContentView(R.layout.activity_nowplaying);
+
+        mDb = SongDatabase.getInstance(getApplicationContext());
 
         // Get an intent from the {@link SongsFragment}
         Intent songsIntent = getIntent();
@@ -80,8 +87,6 @@ public class NowplayingActivity extends AppCompatActivity {
         favoriteImageButton = findViewById(R.id.favorite_image_button);
         favoriteImageButton.setImageResource(R.drawable.ic_favorite_border);
 
-        prefs = PreferenceManager.getDefaultSharedPreferences(NowplayingActivity.this);
-
         // Set a click listener on favorite image button
         favoriteImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,26 +98,30 @@ public class NowplayingActivity extends AppCompatActivity {
                     // Make Toast message that shows the song is added to Favorite
                     Toast.makeText(NowplayingActivity.this, getString(R.string.added_to_favorite),Toast.LENGTH_SHORT).show();
 
+                    final SongEntry songEntry = new SongEntry(songTitle, artistName, songLength, albumArtId);
+                    AppExecutors.getInstance().diskIO().execute(new Runnable() {
+                        @Override
+                        public void run() {
+                            // Insert the songEntry to the SongDatabase by using the songDao
+                            mDb.songDao().insertSong(songEntry);
+                        }
+                    });
+
                 } else {
                     favoriteImageButton.setImageResource(R.drawable.ic_favorite_border);
                     full = false;
                     // Make Toast message that shows the song is removed from Favorite
                     Toast.makeText(NowplayingActivity.this, getString(R.string.removed_from_favorite), Toast.LENGTH_SHORT).show();
+
+                    final SongEntry songEntry = new SongEntry(songTitle, artistName, songLength, albumArtId);
+                    AppExecutors.getInstance().diskIO().execute(new Runnable() {
+                        @Override
+                        public void run() {
+                            // Delete the songEntry from the SongDatabase by using the songDao
+                            mDb.songDao().deleteSong(songEntry);
+                        }
+                    });
                 }
-
-                SharedPreferences.Editor editor = prefs.edit();
-
-                // Store string songTitle value
-                editor.putString(getString(R.string.favorite_song_title), songTitle);
-                // Store string artistName value
-                editor.putString(getString(R.string.favorite_artist_name), artistName);
-                // Store string songLength value
-                editor.putString(getString(R.string.favorite_song_length), songLength);
-                // Store int albumArtId value
-                editor.putInt(getString(R.string.favorite_album_art_id), albumArtId);
-
-                // Save the changes into SharedPreferences
-                editor.apply();
             }
         });
 
