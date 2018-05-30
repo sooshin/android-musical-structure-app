@@ -10,11 +10,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.android.musicplayer.R;
-import com.example.android.musicplayer.Song;
+import com.example.android.musicplayer.database.SongEntry;
 
 import java.util.List;
 
-public class SongAdapter extends RecyclerView.Adapter<SongAdapter.SongViewHolder> {
+public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.SongViewHolder> {
 
     /**
      * An on-click handler that we've defined to make it easy for an Activity to interface with our RecyclerView
@@ -22,7 +22,7 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.SongViewHolder
     final private ItemClickListener mItemClickListener;
 
     private Context mContext;
-    private List<Song> mSongs;
+    private List<SongEntry> mSongEntries;
 
     /**
      * The interface that receives onClick messages.
@@ -32,17 +32,22 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.SongViewHolder
     }
 
     /**
-     * Constructor for SongAdapter
+     * Constructor for FavoriteAdapter
      *
      * @param context
      * @param listener Listener for list item clicks
      */
-    public SongAdapter(Context context, List<Song> songs, ItemClickListener listener) {
+    public FavoriteAdapter(Context context, ItemClickListener listener) {
         mContext = context;
-        mSongs = songs;
         mItemClickListener = listener;
     }
 
+    /**
+     *
+     * @param parent that these ViewHolders are contained within.
+     * @param viewType
+     * @return
+     */
     @NonNull
     @Override
     public SongViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -52,26 +57,35 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.SongViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull SongViewHolder holder, int position) {
-        Song song = mSongs.get(position);
-        holder.songTitleView.setText(song.getSongTitle());
-        holder.artistNameView.setText(song.getArtistName());
-        holder.songLengthView.setText(song.getSongLength());
-        // Check if an album art is provided for this song or not
-        if(song.hasAlbumArtId()) {
-            // If an album art is available, display the provided album art based on the resource ID
-            holder.albumArtImageView.setImageResource(song.getAlbumArtId());
+        SongEntry songEntry = mSongEntries.get(position);
+        holder.songTitleView.setText(songEntry.getSongTitle());
+        holder.artistNameView.setText(songEntry.getArtistName());
+        holder.songLengthView.setText(songEntry.getSongLength());
+        holder.albumArtImageView.setImageResource(songEntry.getAlbumArtId());
+    }
+
+
+    /**
+     * Returns the number of items to display.
+     *
+     * @return The number of items available
+     */
+    @Override
+    public int getItemCount() {
+        if (mSongEntries == null) {
+            return 0;
         } else {
-            // Otherwise display alternate image
-            holder.albumArtImageView.setImageResource(R.drawable.notes);
+            return mSongEntries.size();
         }
     }
 
-    @Override
-    public int getItemCount() {
-        if (mSongs == null) {
-            return 0;
-        }
-        return mSongs.size();
+    public void setSongs(List<SongEntry> songEntries) {
+        mSongEntries = songEntries;
+        notifyDataSetChanged();
+    }
+
+    public List<SongEntry> getSongs() {
+        return mSongEntries;
     }
 
     class SongViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
@@ -97,7 +111,7 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.SongViewHolder
          */
         @Override
         public void onClick(View v) {
-            int itemId = getAdapterPosition();
+            int itemId = mSongEntries.get(getAdapterPosition()).getId();
             mItemClickListener.onItemClickListener(itemId);
         }
     }

@@ -2,23 +2,19 @@ package com.example.android.musicplayer.activity;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
 
 import com.example.android.musicplayer.R;
-import com.example.android.musicplayer.Song;
 import com.example.android.musicplayer.SongViewModel;
-import com.example.android.musicplayer.adapter.SongAdapter;
+import com.example.android.musicplayer.adapter.FavoriteAdapter;
 import com.example.android.musicplayer.database.SongDatabase;
 import com.example.android.musicplayer.database.SongEntry;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,18 +22,19 @@ import java.util.List;
  * the song is saved in this FavoriteActivity.
  */
 
-public class FavoriteActivity extends AppCompatActivity {
+public class FavoriteActivity extends AppCompatActivity implements FavoriteAdapter.ItemClickListener{
 
     /** SongDatabase variable */
     private SongDatabase mDb;
 
-    private ListView mListView;
-    private SongAdapter mAdapter;
+    /** References to RecyclerView and Adapter */
+    private RecyclerView mRecyclerView;
+    private FavoriteAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_songs);
+        setContentView(R.layout.activity_favorite);
 
 //        // When user tap the favorite image button, get data from NowplayingActivity.
 //        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(FavoriteActivity.this);
@@ -47,52 +44,28 @@ public class FavoriteActivity extends AppCompatActivity {
 //        String songLength = prefs.getString(getString(R.string.favorite_song_length), "");
 //        int albumArtId = prefs.getInt(getString(R.string.favorite_album_art_id), -1);
 
-        //Create an list of favorite songs
-        final ArrayList<Song> favoriteSongs = new ArrayList<Song>();
-        mDb = SongDatabase.getInstance(getApplicationContext());
+        // Get the reference to our RecyclerView from xml. This allows us to do things like set
+        // the adapter of the RecyclerView and toggle the visibility.
+        mRecyclerView = findViewById(R.id.recyclerview);
 
-        mAdapter = new SongAdapter(this, favoriteSongs);
-        setupViewModel();
+        // Set LinearLayoutManager which is responsible for measuring and positioning item views within
+        // a RecyclerView into a linear list.
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        // Add new song based on the data from NowplayingActivity.
-//        favoriteSongs.add(new Song(songTitle,artistName, songLength, albumArtId));
+        // Use this setting to improve performance if you know that changes in content do not
+        // change the child layout size in the RecyclerView
+        mRecyclerView.setHasFixedSize(true);
 
-        // Find the {@link ListView} object in the view hierarchy of the {@link Activity}.
-        mListView = findViewById(R.id.list);
+        // The FavoriteAdapter is responsible for displaying each item in the list
+        mAdapter = new FavoriteAdapter(this, this);
+        mRecyclerView.setAdapter(mAdapter);
 
         // Set the background resource
-        mListView.setBackgroundResource(R.drawable.background);
+        mRecyclerView.setBackgroundResource(R.drawable.background);
 
-        // If Favorite track is empty, there is no need to set SongAdapter to the listView.
-//        if (!artistName.equals("")) {
-//            // Create an {@link SongAdapter}, whose data source is a list of favortieSongs.
-//            SongAdapter songAdapter = new SongAdapter(this, favoriteSongs);
-//
-//            // Make the {@link ListView} use the {@link SongAdapter} we created above, so that the
-//            // {@link ListView} will display list items for each {@link Song} in the list.
-//            listView.setAdapter(songAdapter);
-//        }
-
-        // Set a click listener on listView
-        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                // Get the {@link Song} object at the given position the user clicked on
-                Song song = favoriteSongs.get(position);
-
-                // Create a new intent to open the {@link Nowplaying Activity}
-                Intent intent = new Intent(FavoriteActivity.this, NowplayingActivity.class);
-
-                // Pass value to {@link NowplayingActivity}
-                intent.putExtra(getString(R.string.song_title), song.getSongTitle());
-                intent.putExtra(getString(R.string.artist_name), song.getArtistName());
-                intent.putExtra(getString(R.string.song_length), song.getSongLength());
-                intent.putExtra(getString(R.string.album_art_id), song.getAlbumArtId());
-
-                // Start the new activity
-                startActivity(intent);
-            }
-        });
+        mDb = SongDatabase.getInstance(getApplicationContext());
+        // Setup ViewModel to cache data. The ViewModel allows data to survive to configuration changes
+        setupViewModel();
 
         // Navigate with the app icon in the action bar
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -105,9 +78,14 @@ public class FavoriteActivity extends AppCompatActivity {
 
             @Override
             public void onChanged(@Nullable List<SongEntry> songEntries) {
-
+                mAdapter.setSongs(songEntries);
             }
         });
+    }
+
+    @Override
+    public void onItemClickListener(int itemId) {
+
     }
 
     // Move to the previous screen when up button is clicked.

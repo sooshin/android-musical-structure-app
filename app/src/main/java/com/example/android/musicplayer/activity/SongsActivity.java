@@ -3,10 +3,9 @@ package com.example.android.musicplayer.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
 
 import com.example.android.musicplayer.R;
 import com.example.android.musicplayer.Song;
@@ -18,12 +17,12 @@ import java.util.ArrayList;
  * The SongsActivity is the activity that appears when a grid item is clicked on an {@link AlbumsActivity}.
  */
 
-public class SongsActivity extends AppCompatActivity{
+public class SongsActivity extends AppCompatActivity implements SongAdapter.ItemClickListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_songs);
+        setContentView(R.layout.fragment_songs);
 
         // Create an list of songs
         final ArrayList<Song> songs = new ArrayList<Song>();
@@ -77,42 +76,33 @@ public class SongsActivity extends AppCompatActivity{
             }
         }
 
-        // Create an {@link SongAdapter}, whose data source is a list of albumNameResult.
-        SongAdapter songAdapter = new SongAdapter(this, albumNameResult);
+        // Get the reference to our RecyclerView from xml. This allows us to do things like set
+        // the adapter of the RecyclerView and toggle the visibility.
+        RecyclerView recyclerView = findViewById(R.id.recyclerview);
 
-        // Find the {@link ListView} object in the view hierarchy of the {@link Activity}.
-        ListView listView = findViewById(R.id.list);
+        // Set LinearLayoutManager which is responsible for measuring and positioning item views within
+        // a RecyclerView into a linear list.
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        // Make the {@link ListView} use the {@link SongAdapter} we created above
-        listView.setAdapter(songAdapter);
+        // Use this setting to improve performance if you know that changes in content do not
+        // change the child layout size in the RecyclerView
+        recyclerView.setHasFixedSize(true);
+
+        // The SongAdapter is responsible for displaying each item in the list
+        SongAdapter songAdapter = new SongAdapter(this, albumNameResult, this);
+        recyclerView.setAdapter(songAdapter);
 
         // Set the background resource
-        listView.setBackgroundResource(R.drawable.background);
-
-        // Set a click listener on listView
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                // Get the {@link Song} object at the given position the user clicked on
-                Song song = albumNameResult.get(position);
-
-                // Create a new intent to open the {@link Nowplaying Activity}
-                Intent intent = new Intent(SongsActivity.this, NowplayingActivity.class);
-
-                // Pass value to {@link NowplayingActivity}
-                intent.putExtra(getString(R.string.song_title), song.getSongTitle());
-                intent.putExtra(getString(R.string.artist_name), song.getArtistName());
-                intent.putExtra(getString(R.string.song_length), song.getSongLength());
-                intent.putExtra(getString(R.string.album_art_id), song.getAlbumArtId());
-
-                // Start the new activity
-                startActivity(intent);
-            }
-        });
+        recyclerView.setBackgroundResource(R.drawable.background);
 
         // Navigate with the app icon in the action bar
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+    }
+
+    @Override
+    public void onItemClickListener(int itemId) {
+
     }
 
     // Move to the previous screen when up button is clicked.
