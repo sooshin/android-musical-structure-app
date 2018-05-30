@@ -7,8 +7,10 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.MenuItem;
 
+import com.example.android.musicplayer.AppExecutors;
 import com.example.android.musicplayer.R;
 import com.example.android.musicplayer.SongViewModel;
 import com.example.android.musicplayer.adapter.FavoriteAdapter;
@@ -62,6 +64,31 @@ public class FavoriteActivity extends AppCompatActivity implements FavoriteAdapt
 
         // Set the background resource
         mRecyclerView.setBackgroundResource(R.drawable.background);
+
+        /*
+         Add a touch helper to the RecyclerView to recognize when a user swipes to delete an item.
+         An ItemTouchHelper enables touch behavior (like swipe and move) on each ViewHolder,
+         and uses callbacks to signal when a user is performing these actions.
+         */
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+            @Override
+            public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            // Called when a user swipes left or right on a ViewHolder
+            @Override
+            public void onSwiped(final RecyclerView.ViewHolder viewHolder, int direction) {
+                AppExecutors.getInstance().diskIO().execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        int position = viewHolder.getAdapterPosition();
+                        List<SongEntry> songEntries = mAdapter.getSongs();
+                        mDb.songDao().deleteSong(songEntries.get(position));
+                    }
+                });
+            }
+        }).attachToRecyclerView(mRecyclerView);
 
         mDb = SongDatabase.getInstance(getApplicationContext());
         // Setup ViewModel to cache data. The ViewModel allows data to survive to configuration changes
