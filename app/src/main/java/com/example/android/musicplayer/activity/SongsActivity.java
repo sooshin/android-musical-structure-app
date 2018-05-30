@@ -22,7 +22,7 @@ public class SongsActivity extends AppCompatActivity implements SongAdapter.Item
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_songs);
+        setContentView(R.layout.activity_songs);
 
         // Create an list of songs
         final ArrayList<Song> songs = new ArrayList<Song>();

@@ -31,7 +31,7 @@ public class ArtistsFragment extends Fragment implements SongAdapter.ItemClickLi
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_songs, container, false);
+        View rootView = inflater.inflate(R.layout.activity_songs, container, false);
 
         // Create an list of songs
         mSongs = new ArrayList<Song>();

@@ -25,7 +25,7 @@ public class AlbumsActivity extends AppCompatActivity implements SongAdapter.Ite
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_albums);
+        setContentView(R.layout.activity_songs);
 
         // Create an list of songs
         mSongs = new ArrayList<Song>();

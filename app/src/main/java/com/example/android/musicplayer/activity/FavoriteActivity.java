@@ -34,7 +34,7 @@ public class FavoriteActivity extends AppCompatActivity implements FavoriteAdapt
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_favorite);
+        setContentView(R.layout.activity_songs);
 
 //        // When user tap the favorite image button, get data from NowplayingActivity.
 //        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(FavoriteActivity.this);
