@@ -3,14 +3,13 @@ package com.example.android.musicplayer.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.GridView;
 
 import com.example.android.musicplayer.R;
 import com.example.android.musicplayer.Song;
-import com.example.android.musicplayer.adapter.AlbumAdapter;
+import com.example.android.musicplayer.adapter.SongAdapter;
 import com.example.android.musicplayer.fragment.ArtistsFragment;
 
 import java.util.ArrayList;
@@ -18,7 +17,10 @@ import java.util.ArrayList;
 /**
  * The AlbumsActivity is the activity that appears when a grid item is clicked on an {@link ArtistsFragment}.
  */
-public class AlbumsActivity extends AppCompatActivity {
+public class AlbumsActivity extends AppCompatActivity implements SongAdapter.ItemClickListener {
+
+    private ArrayList<Song> mSongs;
+    private ArrayList<Song> mArtistNameResult;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,25 +28,25 @@ public class AlbumsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_albums);
 
         // Create an list of songs
-        final ArrayList<Song> songs = new ArrayList<Song>();
+        mSongs = new ArrayList<Song>();
 
-        songs.add(new Song(getString(R.string.ed_sheeran), getString(R.string.divide),
+        mSongs.add(new Song(getString(R.string.ed_sheeran), getString(R.string.divide),
                 R.drawable.ed_sheeran_divide));
-        songs.add(new Song(getString(R.string.camila_cabello), getString(R.string.havana_album),
+        mSongs.add(new Song(getString(R.string.camila_cabello), getString(R.string.havana_album),
                 R.drawable.camila_cabello_havana));
-        songs.add(new Song(getString(R.string.imagine_dragones), getString(R.string.evolve),
+        mSongs.add(new Song(getString(R.string.imagine_dragones), getString(R.string.evolve),
                 R.drawable.imagine_dragones_evolve));
-        songs.add(new Song(getString(R.string.ed_sheeran), getString(R.string.x),
+        mSongs.add(new Song(getString(R.string.ed_sheeran), getString(R.string.x),
                 R.drawable.ed_sheeran_multiply));
-        songs.add(new Song(getString(R.string.taylor_swift), getString(R.string.reputation),
+        mSongs.add(new Song(getString(R.string.taylor_swift), getString(R.string.reputation),
                 R.drawable.taylor_swift_reputation));
-        songs.add(new Song(getString(R.string.maroon_5), getString(R.string.red_pill_blues),
+        mSongs.add(new Song(getString(R.string.maroon_5), getString(R.string.red_pill_blues),
                 R.drawable.maroon5_red_pill_blues));
-        songs.add(new Song(getString(R.string.portugal_the_man), getString(R.string.woodstock),
+        mSongs.add(new Song(getString(R.string.portugal_the_man), getString(R.string.woodstock),
                 R.drawable.portugal_the_man_woodstock));
-        songs.add(new Song(getString(R.string.sam_smith), getString(R.string.the_thrill_of_it_all),
+        mSongs.add(new Song(getString(R.string.sam_smith), getString(R.string.the_thrill_of_it_all),
                 R.drawable.sam_smith_the_thrill_of_it_all));
-        songs.add(new Song(getString(R.string.halsey), getString(R.string.hopeless_fountain_kingdom),
+        mSongs.add(new Song(getString(R.string.halsey), getString(R.string.hopeless_fountain_kingdom),
                 -1));
 
 
@@ -55,48 +57,33 @@ public class AlbumsActivity extends AppCompatActivity {
         String artistName = artistsIntent.getStringExtra(getString(R.string.artist_name));
 
         // Create an list of songs to search for album names that match the artist's name
-        final ArrayList<Song> artistNameResult = new ArrayList<Song>();
+        mArtistNameResult = new ArrayList<Song>();
 
         // Search for album names that match the artist's name
-        for (int i = 0; i < songs.size(); i++) {
-            if (artistName.equals( songs.get(i).getArtistName())) {
-                artistNameResult.add(new Song(songs.get(i).getArtistName(), songs.get(i).getAlbumName(), songs.get(i).getAlbumArtId()));
+        for (int i = 0; i < mSongs.size(); i++) {
+            if (artistName.equals( mSongs.get(i).getArtistName())) {
+                mArtistNameResult.add(new Song(mSongs.get(i).getArtistName(), mSongs.get(i).getAlbumName(), mSongs.get(i).getAlbumArtId()));
             }
         }
 
-        // Create an {@link AlbumAdapter}, whose data source is a list of artistNameResult.
-        AlbumAdapter albumAdapter = new AlbumAdapter(this, artistNameResult);
+        // Get the reference to our RecyclerView from xml. This allows us to do things like set
+        // the adapter of the RecyclerView and toggle the visibility.
+        RecyclerView recyclerView = findViewById(R.id.recyclerview);
 
-        // Find the {@link GridView} object in the view hierarchy of the {@link Activity}.
-        // There should be a {@link GridView} with the view ID called gridview, which is declared in the
-        // activity_albums.xml layout file.
-        GridView gridView = findViewById(R.id.gridview);
+        // Set LinearLayoutManager which is responsible for measuring and positioning item views within
+        // a RecyclerView into a linear list.
+        recyclerView.setLayoutManager(new GridLayoutManager(AlbumsActivity.this, 2));
 
-        // Make the {@link GridView} use the {@link AlbumAdapter} we created above, so that the
-        // {@link GridView} will display grid items for each {@link Song} in the list.
-        gridView.setAdapter(albumAdapter);
+        // Use this setting to improve performance if you know that changes in content do not
+        // change the child layout size in the RecyclerView
+        recyclerView.setHasFixedSize(true);
+
+        // The SongAdapter is responsible for displaying each item in the list
+        SongAdapter songAdapter = new SongAdapter(this, mArtistNameResult, this);
+        recyclerView.setAdapter(songAdapter);
 
         // Set the background resource
-        gridView.setBackgroundResource(R.drawable.background);
-
-        // Set a click listener on gridView
-        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            // The code in this method will be executed when the grid item is clicked on.
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                // Get the {@link Song} object at the given position the user clicked on
-                Song song = artistNameResult.get(position);
-
-                // Create a new intent to open the {@link SongsActivity}
-                Intent songsIntent = new Intent(AlbumsActivity.this, SongsActivity.class);
-
-                // Pass album name value to {@link SongsActivity}
-                songsIntent.putExtra(getString(R.string.album_name), song.getAlbumName());
-
-                // Start the new activity
-                startActivity(songsIntent);
-            }
-        });
+        recyclerView.setBackgroundResource(R.drawable.background);
 
         // Navigate with the app icon in the action bar
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -113,5 +100,20 @@ public class AlbumsActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    public void onItemClickListener(int itemId) {
+        // Get the {@link Song} object at the given position the user clicked on
+        Song song = mArtistNameResult.get(itemId);
+
+        // Create a new intent to open the {@link SongsActivity}
+        Intent songsIntent = new Intent(AlbumsActivity.this, SongsActivity.class);
+
+        // Pass album name value to {@link SongsActivity}
+        songsIntent.putExtra(getString(R.string.album_name), song.getAlbumName());
+
+        // Start the new activity
+        startActivity(songsIntent);
     }
 }
