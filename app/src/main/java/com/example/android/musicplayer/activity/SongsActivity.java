@@ -19,6 +19,8 @@ import java.util.ArrayList;
 
 public class SongsActivity extends AppCompatActivity implements SongAdapter.ItemClickListener{
 
+    private ArrayList<Song> mAlbumNameResult;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,12 +65,12 @@ public class SongsActivity extends AppCompatActivity implements SongAdapter.Item
         String albumName = albumsIntent.getStringExtra(getString(R.string.album_name));
 
         // Create an list of songs to search for artist name that matches the album name
-        final ArrayList<Song> albumNameResult = new ArrayList<Song>();
+        mAlbumNameResult = new ArrayList<Song>();
 
         // Search for artist name that matches the album name
         for (int i = 0; i < songs.size(); i++) {
             if (albumName.equals(songs.get(i).getAlbumName())) {
-                albumNameResult.add(new Song(songs.get(i).getSongTitle(),
+                mAlbumNameResult.add(new Song(songs.get(i).getSongTitle(),
                         songs.get(i).getArtistName(),
                         songs.get(i).getSongLength(),
                         songs.get(i).getAlbumArtId(),
@@ -89,7 +91,7 @@ public class SongsActivity extends AppCompatActivity implements SongAdapter.Item
         recyclerView.setHasFixedSize(true);
 
         // The SongAdapter is responsible for displaying each item in the list
-        SongAdapter songAdapter = new SongAdapter(this, albumNameResult, this);
+        SongAdapter songAdapter = new SongAdapter(this, mAlbumNameResult, this);
         recyclerView.setAdapter(songAdapter);
 
         // Set the background resource
@@ -102,7 +104,20 @@ public class SongsActivity extends AppCompatActivity implements SongAdapter.Item
 
     @Override
     public void onItemClickListener(int itemId) {
+        // Get the {@link Song} object at the given position the user clicked on
+        Song song = mAlbumNameResult.get(itemId);
 
+        // Create a new intent to open the {@link Nowplaying Activity}
+        Intent nowIntent = new Intent(this, NowplayingActivity.class);
+
+        // Pass value to {@link NowplayingActivity}
+        nowIntent.putExtra(getString(R.string.song_title), song.getSongTitle());
+        nowIntent.putExtra(getString(R.string.artist_name), song.getArtistName());
+        nowIntent.putExtra(getString(R.string.song_length), song.getSongLength());
+        nowIntent.putExtra(getString(R.string.album_art_id), song.getAlbumArtId());
+
+        // Start the new activity
+        startActivity(nowIntent);
     }
 
     // Move to the previous screen when up button is clicked.
