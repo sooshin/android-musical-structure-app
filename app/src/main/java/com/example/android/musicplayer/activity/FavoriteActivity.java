@@ -38,14 +38,6 @@ public class FavoriteActivity extends AppCompatActivity implements FavoriteAdapt
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_songs);
 
-//        // When user tap the favorite image button, get data from NowplayingActivity.
-//        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(FavoriteActivity.this);
-
-//        String songTitle = prefs.getString(getString(R.string.favorite_song_title), "");
-//        String artistName = prefs.getString(getString(R.string.favorite_artist_name), "");
-//        String songLength = prefs.getString(getString(R.string.favorite_song_length), "");
-//        int albumArtId = prefs.getInt(getString(R.string.favorite_album_art_id), -1);
-
         // Get the reference to our RecyclerView from xml. This allows us to do things like set
         // the adapter of the RecyclerView and toggle the visibility.
         mRecyclerView = findViewById(R.id.recyclerview);
