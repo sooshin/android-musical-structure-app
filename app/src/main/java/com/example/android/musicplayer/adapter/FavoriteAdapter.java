@@ -61,7 +61,14 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.SongVi
         holder.songTitleView.setText(songEntry.getSongTitle());
         holder.artistNameView.setText(songEntry.getArtistName());
         holder.songLengthView.setText(songEntry.getSongLength());
-        holder.albumArtImageView.setImageResource(songEntry.getAlbumArtId());
+        // Check if an album art is provided for this song or not
+        if(songEntry.hasAlbumArtId()) {
+            // If an album art is available, display the provided album art based on the resource ID
+            holder.albumArtImageView.setImageResource(songEntry.getAlbumArtId());
+        } else {
+            // Otherwise display alternate image
+            holder.albumArtImageView.setImageResource(R.drawable.notes);
+        }
     }
 
 

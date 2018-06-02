@@ -5,6 +5,8 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 
+import com.example.android.musicplayer.Song;
+
 @Entity(tableName = "song")
 public class SongEntry {
 
@@ -63,4 +65,7 @@ public class SongEntry {
         return albumArtId;
    }
 
+    public boolean hasAlbumArtId(){
+        return albumArtId != Song.NO_IMAGE_PROVIDED;
+    }
 }

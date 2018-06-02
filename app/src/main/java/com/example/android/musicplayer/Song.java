@@ -22,7 +22,7 @@ public class Song {
     private String mAlbumName;
 
     /** Constant value that represents no image was provided for this song */
-    private static final int NO_IMAGE_PROVIDED = -1;
+    public static final int NO_IMAGE_PROVIDED = -1;
 
     /**
      * Create a new Song object.
