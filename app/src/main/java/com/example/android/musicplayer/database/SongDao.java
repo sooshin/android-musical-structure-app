@@ -19,4 +19,7 @@ public interface SongDao {
 
     @Delete
     void deleteSong(SongEntry songEntry);
+
+    @Query("SELECT * FROM song WHERE song_title = :songTitle")
+    LiveData<SongEntry> loadSongByTitle(String songTitle);
 }

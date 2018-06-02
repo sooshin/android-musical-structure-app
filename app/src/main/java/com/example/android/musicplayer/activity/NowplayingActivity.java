@@ -1,8 +1,11 @@
 package com.example.android.musicplayer.activity;
 
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,6 +15,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.android.musicplayer.AppExecutors;
+import com.example.android.musicplayer.FavoriteViewModel;
+import com.example.android.musicplayer.FavoriteViewModelFactory;
 import com.example.android.musicplayer.R;
 import com.example.android.musicplayer.database.SongDatabase;
 import com.example.android.musicplayer.database.SongEntry;
@@ -25,13 +30,19 @@ public class NowplayingActivity extends AppCompatActivity {
 
     private SharedPreferences prefs;
 
+    private final String TAG = NowplayingActivity.class.getSimpleName();
+
     private String songTitle;
     private String artistName;
     private String songLength;
     private int albumArtId;
 
     private ImageButton favoriteImageButton;
-    private boolean full = false;
+
+    /** True if the song in Now playing Activity exist in the Favorite list, otherwise false */
+    private boolean exist;
+    /** Member variable for the SongEntry */
+    private SongEntry mSongEntry;
 
     /** SongDatabase variable */
     private SongDatabase mDb;
@@ -83,51 +94,85 @@ public class NowplayingActivity extends AppCompatActivity {
             imageView.setImageResource(R.drawable.notes);
         }
 
-        // Find the ImageButton and set image resource to show ic_favorite_border
+        // Create a new SongEntry
+        mSongEntry = new SongEntry(songTitle, artistName, songLength, albumArtId);
+        // Set exist value to true or false whether the song exists in the Favorite list
+        exist = existInFavorite();
+
+        // Find the Favorite Image Button
         favoriteImageButton = findViewById(R.id.favorite_image_button);
-        favoriteImageButton.setImageResource(R.drawable.ic_favorite_border);
 
         // Set a click listener on favorite image button
         favoriteImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Change image resource every time favorite image button is clicked
-                if (!full) {
-                    favoriteImageButton.setImageResource(R.drawable.ic_favorite_white_24dp);
-                    full = true;
-                    // Make Toast message that shows the song is added to Favorite
-                    Toast.makeText(NowplayingActivity.this, getString(R.string.added_to_favorite),Toast.LENGTH_SHORT).show();
-
-                    final SongEntry songEntry = new SongEntry(songTitle, artistName, songLength, albumArtId);
-                    AppExecutors.getInstance().diskIO().execute(new Runnable() {
-                        @Override
-                        public void run() {
-                            // Insert the songEntry to the SongDatabase by using the songDao
-                            mDb.songDao().insertSong(songEntry);
-                        }
-                    });
-
-                } else {
-                    favoriteImageButton.setImageResource(R.drawable.ic_favorite_border);
-                    full = false;
-                    // Make Toast message that shows the song is removed from Favorite
-                    Toast.makeText(NowplayingActivity.this, getString(R.string.removed_from_favorite), Toast.LENGTH_SHORT).show();
-
-                    final SongEntry songEntry = new SongEntry(songTitle, artistName, songLength, albumArtId);
-                    AppExecutors.getInstance().diskIO().execute(new Runnable() {
-                        @Override
-                        public void run() {
-                            // Delete the songEntry from the SongDatabase by using the songDao
-                            mDb.songDao().deleteSong(songEntry);
-                        }
-                    });
-                }
+                onFavoriteButtonClicked();
             }
         });
 
         // Navigate with the app icon in the action bar
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+    }
+
+    /**
+     * If the song is in the Favorite list, set favoriteImage to full heart image and return true.
+     * Otherwise, set favoriteImage to border heart image and return false.
+     */
+    private boolean existInFavorite() {
+        FavoriteViewModelFactory factory = new FavoriteViewModelFactory(mDb, songTitle);
+        final FavoriteViewModel favoriteViewModel = ViewModelProviders.of(this, factory).get(FavoriteViewModel.class);
+
+        favoriteViewModel.getSongEntry().observe(this, new Observer<SongEntry>() {
+            @Override
+            public void onChanged(@Nullable SongEntry songEntry) {
+                if (favoriteViewModel.getSongEntry().getValue() == null) {
+                    favoriteImageButton.setImageResource(R.drawable.ic_favorite_border);
+                    exist = false;
+                } else {
+                    favoriteImageButton.setImageResource(R.drawable.ic_favorite_white_24dp);
+                    exist = true;
+                }
+            }
+        });
+        return exist;
+    }
+
+    /**
+     * Called when the "FavoriteImage" button is clicked.
+     * If the song does not exist in the Favorite list, insert the
+     * mSongEntry data into the database. Otherwise, delete the songEntry data from the database.
+     */
+    private void onFavoriteButtonClicked() {
+        // Change image resource every time favorite image button is clicked
+        if (!exist) {
+            // Make Toast message that shows the song is added to Favorite
+            Toast.makeText(NowplayingActivity.this, getString(R.string.added_to_favorite),Toast.LENGTH_SHORT).show();
+
+            AppExecutors.getInstance().diskIO().execute(new Runnable() {
+                @Override
+                public void run() {
+                    // Insert the mSongEntry to the SongDatabase by using the songDao
+                    mDb.songDao().insertSong(mSongEntry);
+                }
+            });
+
+        } else {
+            // Make Toast message that shows the song is removed from Favorite
+            Toast.makeText(NowplayingActivity.this, getString(R.string.removed_from_favorite), Toast.LENGTH_SHORT).show();
+
+            FavoriteViewModelFactory factory = new FavoriteViewModelFactory(mDb, songTitle);
+            FavoriteViewModel favoriteViewModel = ViewModelProviders.of(this, factory).get(FavoriteViewModel.class);
+            final SongEntry songEntry = favoriteViewModel.getSongEntry().getValue();
+
+            AppExecutors.getInstance().diskIO().execute(new Runnable() {
+                @Override
+                public void run() {
+                    // Delete the songEntry from the SongDatabase by using the songDao
+                    mDb.songDao().deleteSong(songEntry);
+                }
+            });
+        }
     }
 
     // Move to the previous screen when up button is clicked.
