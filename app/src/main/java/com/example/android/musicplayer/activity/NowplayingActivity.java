@@ -3,7 +3,6 @@ package com.example.android.musicplayer.activity;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -27,8 +26,6 @@ import com.example.android.musicplayer.fragment.SongsFragment;
  * and a {@link SongsFragment}
  */
 public class NowplayingActivity extends AppCompatActivity {
-
-    private SharedPreferences prefs;
 
     private final String TAG = NowplayingActivity.class.getSimpleName();
 
