@@ -118,8 +118,8 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.SongVi
          */
         @Override
         public void onClick(View v) {
-            int itemId = mSongEntries.get(getAdapterPosition()).getId();
-            mItemClickListener.onItemClickListener(itemId);
+            int position = getAdapterPosition();
+            mItemClickListener.onItemClickListener(position);
         }
     }
 }

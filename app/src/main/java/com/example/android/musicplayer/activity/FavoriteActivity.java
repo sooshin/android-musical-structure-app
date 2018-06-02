@@ -2,6 +2,7 @@ package com.example.android.musicplayer.activity;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -103,8 +104,19 @@ public class FavoriteActivity extends AppCompatActivity implements FavoriteAdapt
     }
 
     @Override
-    public void onItemClickListener(int itemId) {
+    public void onItemClickListener(int position) {
+        List<SongEntry> songEntries = mAdapter.getSongs();
+        SongEntry songEntry = songEntries.get(position);
 
+        Intent intent = new Intent(FavoriteActivity.this, NowplayingActivity.class);
+
+        // Pass value to {@link NowplayingActivity}
+        intent.putExtra(getString(R.string.song_title), songEntry.getSongTitle());
+        intent.putExtra(getString(R.string.artist_name), songEntry.getArtistName());
+        intent.putExtra(getString(R.string.song_length), songEntry.getSongLength());
+        intent.putExtra(getString(R.string.album_art_id), songEntry.getAlbumArtId());
+
+        startActivity(intent);
     }
 
     // Move to the previous screen when up button is clicked.
