@@ -33,7 +33,7 @@ public class SongsFragment extends Fragment implements SongAdapter.ItemClickList
         View rootView = inflater.inflate(R.layout.activity_songs, container, false);
 
         // Create an list of songs
-        mSongs = new ArrayList<Song>();
+        mSongs = new ArrayList<>();
 
         mSongs.add(new Song(getString(R.string.shape_of_you), getString(R.string.ed_sheeran),
                 getString(R.string.length_shape_of_you), R.drawable.ed_sheeran_divide));

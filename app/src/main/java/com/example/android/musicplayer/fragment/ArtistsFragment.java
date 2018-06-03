@@ -34,7 +34,7 @@ public class ArtistsFragment extends Fragment implements SongAdapter.ItemClickLi
         View rootView = inflater.inflate(R.layout.activity_songs, container, false);
 
         // Create an list of songs
-        mSongs = new ArrayList<Song>();
+        mSongs = new ArrayList<>();
 
         mSongs.add(new Song(getString(R.string.ed_sheeran), R.drawable.ed_sheeran_divide));
         mSongs.add(new Song(getString(R.string.camila_cabello), R.drawable.camila_cabello_havana));

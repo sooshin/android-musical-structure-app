@@ -28,7 +28,7 @@ public class AlbumsActivity extends AppCompatActivity implements SongAdapter.Ite
         setContentView(R.layout.activity_songs);
 
         // Create an list of songs
-        mSongs = new ArrayList<Song>();
+        mSongs = new ArrayList<>();
 
         mSongs.add(new Song(getString(R.string.ed_sheeran), getString(R.string.divide),
                 R.drawable.ed_sheeran_divide));
@@ -57,7 +57,7 @@ public class AlbumsActivity extends AppCompatActivity implements SongAdapter.Ite
         String artistName = artistsIntent.getStringExtra(getString(R.string.artist_name));
 
         // Create an list of songs to search for album names that match the artist's name
-        mArtistNameResult = new ArrayList<Song>();
+        mArtistNameResult = new ArrayList<>();
 
         // Search for album names that match the artist's name
         for (int i = 0; i < mSongs.size(); i++) {
