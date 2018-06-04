@@ -37,12 +37,15 @@ public class CategoryAdapter extends FragmentPagerAdapter {
      */
     @Override
     public Fragment getItem(int position) {
-        if (position == 0) {
-            return new PlaylistsFragment();
-        } else if (position == 1){
-            return new ArtistsFragment();
-        } else{
-            return new SongsFragment();
+        switch (position) {
+            case 0:
+                return new PlaylistsFragment();
+            case 1:
+                return new ArtistsFragment();
+            case 2:
+                return new SongsFragment();
+            default:
+                return null;
         }
     }
 
@@ -56,12 +59,15 @@ public class CategoryAdapter extends FragmentPagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-       if (position == 0) {
-           return mContext.getString(R.string.category_playlists);
-       } else if (position == 1) {
-           return mContext.getString(R.string.category_artists);
-       } else {
-           return mContext.getString(R.string.category_songs);
-       }
+        switch (position) {
+            case 0:
+                return mContext.getString(R.string.category_playlists);
+            case 1:
+                return mContext.getString(R.string.category_artists);
+            case 2:
+                return mContext.getString(R.string.category_songs);
+            default:
+                return null;
+        }
     }
 }
