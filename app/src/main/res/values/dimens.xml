@@ -39,6 +39,12 @@
     <!-- Vertical spacing of grid view -->
     <dimen name="verticalSpacing">10dp</dimen>
 
+    <!-- Layout margin in activity_nowplaying -->
+    <dimen name="margin_nowplaying">8dp</dimen>
+
+    <!-- Size of Image in land/activity_nowplaying -->
+    <dimen name="size_nowplaying_image">240dp</dimen>
+
     <!-- ImageView in activity_nowplaying.xml-->
     <dimen name="layout_width">260dp</dimen>
     <dimen name="layout_height">260dp</dimen>
