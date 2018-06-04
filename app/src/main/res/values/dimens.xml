@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Height of list item -->
-    <dimen name="list_item_height">64dp</dimen>
+    <!-- Size of Image in list_item -->
+    <dimen name="size_list_image">56dp</dimen>
 
-    <!-- Layout width of list item -->
-    <dimen name="list_layout_width">64dp</dimen>
+    <!-- Card corner radius -->
+    <dimen name="corner_radius_list">8dp</dimen>
+    <dimen name="corner_radius_playlist">8dp</dimen>
+
+    <!-- Elevation of cardView -->
+    <dimen name="elevation_playlist">8dp</dimen>
+
+    <!-- Size of Image in playlist_item -->
+    <dimen name="size_playlist_image">160dp</dimen>
 
     <!-- List item in list_item.xml -->
-    <dimen name="image_padding_left">8dp</dimen>
-    <dimen name="image_padding_top">4dp</dimen>
+    <dimen name="margin_horizontal_image">8dp</dimen>
+    <dimen name="margin_vertical_image">4dp</dimen>
     <dimen name="text_view_layout_height">32dp</dimen>
     <dimen name="text_view_padding">16dp</dimen>
     <dimen name="linear_padding_left">8dp</dimen>

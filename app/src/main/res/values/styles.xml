@@ -80,12 +80,8 @@
 
     <!-- Style for an ImageView in list_item.xml -->
     <style name="ListItemImageViewStyle">
-        <item name="android:layout_width">@dimen/list_layout_width</item>
-        <item name="android:layout_height">@dimen/list_item_height</item>
-        <item name="android:paddingBottom">@dimen/image_padding_top</item>
-        <item name="android:paddingLeft">@dimen/image_padding_left</item>
-        <item name="android:paddingRight">@dimen/image_padding_left</item>
-        <item name="android:paddingTop">@dimen/image_padding_top</item>
+        <item name="android:layout_width">@dimen/size_list_image</item>
+        <item name="android:layout_height">@dimen/size_list_image</item>
     </style>
 
     <!-- Style for an ImageView in the activity_nowplaying.xml -->
