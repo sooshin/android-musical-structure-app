@@ -16,7 +16,7 @@ public class Song {
     private String mSongLength;
 
     /** Image resource ID of AlbumArt for the song */
-    private int mAlbumArtId = NO_IMAGE_PROVIDED;
+    private int mAlbumArtId;
 
     /** Album name for the song*/
     private String mAlbumName;
