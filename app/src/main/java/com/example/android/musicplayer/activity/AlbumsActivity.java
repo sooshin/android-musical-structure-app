@@ -82,9 +82,6 @@ public class AlbumsActivity extends AppCompatActivity implements SongAdapter.Ite
         SongAdapter songAdapter = new SongAdapter(this, mArtistNameResult, this);
         recyclerView.setAdapter(songAdapter);
 
-        // Set the background resource
-        recyclerView.setBackgroundResource(R.drawable.background);
-
         // Navigate with the app icon in the action bar
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);

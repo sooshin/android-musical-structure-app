@@ -4,6 +4,11 @@
     <color name="colorPrimaryDark">#005CB2</color>
     <color name="colorAccent">#FF4081</color>
 
+    <!-- Background color -->
+    <color name="start_color">#038DFF</color>
+    <color name="center_color">#868DFF</color>
+    <color name="end_color">#FA8DFF</color>
+
     <!--  Tab color -->
     <color name="tab_indicator_color">#2196F3</color>
 

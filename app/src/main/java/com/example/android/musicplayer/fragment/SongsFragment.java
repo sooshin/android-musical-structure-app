@@ -81,9 +81,6 @@ public class SongsFragment extends Fragment implements SongAdapter.ItemClickList
         SongAdapter adapter = new SongAdapter(this.getContext(), mSongs, this);
         recyclerView.setAdapter(adapter);
 
-        // Set the background resource
-        recyclerView.setBackgroundResource(R.drawable.background);
-
         return rootView;
     }
 

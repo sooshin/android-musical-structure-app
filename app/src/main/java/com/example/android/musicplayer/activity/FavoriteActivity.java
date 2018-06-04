@@ -55,9 +55,6 @@ public class FavoriteActivity extends AppCompatActivity implements FavoriteAdapt
         mAdapter = new FavoriteAdapter(this, this);
         mRecyclerView.setAdapter(mAdapter);
 
-        // Set the background resource
-        mRecyclerView.setBackgroundResource(R.drawable.background);
-
         /*
          Add a touch helper to the RecyclerView to recognize when a user swipes to delete an item.
          An ItemTouchHelper enables touch behavior (like swipe and move) on each ViewHolder,
