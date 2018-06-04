@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.example.android.musicplayer.R;
 import com.example.android.musicplayer.Song;
 import com.example.android.musicplayer.activity.FavoriteActivity;
+import com.example.android.musicplayer.activity.SongsActivity;
 import com.example.android.musicplayer.adapter.PlaylistAdapter;
 
 import java.util.ArrayList;
@@ -59,14 +60,24 @@ public class PlaylistsFragment extends Fragment implements PlaylistAdapter.ItemC
         // Create an list of songs
         mSongs = new ArrayList<>();
 
-        mSongs.add(new Song(getString(R.string.ed_sheeran), R.drawable.ed_sheeran_divide));
-        mSongs.add(new Song(getString(R.string.camila_cabello), R.drawable.camila_cabello_havana));
-        mSongs.add(new Song(getString(R.string.imagine_dragones), R.drawable.imagine_dragones_evolve));
-        mSongs.add(new Song(getString(R.string.taylor_swift), R.drawable.taylor_swift_reputation));
-        mSongs.add(new Song(getString(R.string.maroon_5), R.drawable.maroon5_red_pill_blues));
-        mSongs.add(new Song(getString(R.string.portugal_the_man), R.drawable.portugal_the_man_woodstock));
-        mSongs.add(new Song(getString(R.string.sam_smith), R.drawable.sam_smith_the_thrill_of_it_all));
-        mSongs.add(new Song(getString(R.string.halsey), -1));
+        mSongs.add(new Song(getString(R.string.ed_sheeran), getString(R.string.divide),
+                R.drawable.ed_sheeran_divide));
+        mSongs.add(new Song(getString(R.string.camila_cabello), getString(R.string.havana_album),
+                R.drawable.camila_cabello_havana));
+        mSongs.add(new Song(getString(R.string.imagine_dragones), getString(R.string.evolve),
+                R.drawable.imagine_dragones_evolve));
+        mSongs.add(new Song(getString(R.string.ed_sheeran), getString(R.string.x),
+                R.drawable.ed_sheeran_multiply));
+        mSongs.add(new Song(getString(R.string.taylor_swift), getString(R.string.reputation),
+                R.drawable.taylor_swift_reputation));
+        mSongs.add(new Song(getString(R.string.maroon_5), getString(R.string.red_pill_blues),
+                R.drawable.maroon5_red_pill_blues));
+        mSongs.add(new Song(getString(R.string.portugal_the_man), getString(R.string.woodstock),
+                R.drawable.portugal_the_man_woodstock));
+        mSongs.add(new Song(getString(R.string.sam_smith), getString(R.string.the_thrill_of_it_all),
+                R.drawable.sam_smith_the_thrill_of_it_all));
+        mSongs.add(new Song(getString(R.string.halsey), getString(R.string.hopeless_fountain_kingdom),
+                -1));
 
         // Get the reference to our RecyclerView from xml. This allows us to do things like set
         // the adapter of the RecyclerView and toggle the visibility.
@@ -90,7 +101,17 @@ public class PlaylistsFragment extends Fragment implements PlaylistAdapter.ItemC
     }
 
     @Override
-    public void onItemClickListener(int itemId) {
+    public void onItemClickListener(int position) {
+        // Get the {@link Song} object at the given position the user clicked on
+        Song song = mSongs.get(position);
 
+        // Create a new intent to open the {@link SongsActivity}
+        Intent songsIntent = new Intent(getActivity(), SongsActivity.class);
+
+        // Pass album name value to {@link SongsActivity}
+        songsIntent.putExtra(getString(R.string.album_name), song.getAlbumName());
+
+        // Start the new activity
+        startActivity(songsIntent);
     }
 }

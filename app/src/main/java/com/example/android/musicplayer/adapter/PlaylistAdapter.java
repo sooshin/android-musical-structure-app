@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.android.musicplayer.R;
 import com.example.android.musicplayer.Song;
@@ -62,6 +63,8 @@ public class PlaylistAdapter extends RecyclerView.Adapter<PlaylistAdapter.Playli
             // Otherwise display alternate image
             holder.albumArtImageView.setImageResource(R.drawable.notes);
         }
+        holder.albumNameTextView.setText(song.getAlbumName());
+        holder.artistTextView.setText(song.getArtistName());
     }
 
     @Override
@@ -75,13 +78,18 @@ public class PlaylistAdapter extends RecyclerView.Adapter<PlaylistAdapter.Playli
     class PlaylistViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private ImageView albumArtImageView;
         private CardView cardView;
+        private TextView albumNameTextView;
+        private TextView artistTextView;
 
         public PlaylistViewHolder(View itemView) {
             super(itemView);
 
             albumArtImageView = itemView.findViewById(R.id.image);
             cardView = itemView.findViewById(R.id.cardView);
+            albumNameTextView = itemView.findViewById(R.id.tv_playlist_album_name);
+            artistTextView = itemView.findViewById(R.id.tv_playlist_artist);
             itemView.setOnClickListener(this);
+            cardView.setOnClickListener(this);
         }
 
         /**
