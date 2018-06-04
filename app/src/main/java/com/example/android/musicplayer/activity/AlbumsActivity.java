@@ -9,7 +9,7 @@ import android.view.MenuItem;
 
 import com.example.android.musicplayer.R;
 import com.example.android.musicplayer.Song;
-import com.example.android.musicplayer.adapter.SongAdapter;
+import com.example.android.musicplayer.adapter.PlaylistAdapter;
 import com.example.android.musicplayer.fragment.ArtistsFragment;
 
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ import java.util.ArrayList;
 /**
  * The AlbumsActivity is the activity that appears when a grid item is clicked on an {@link ArtistsFragment}.
  */
-public class AlbumsActivity extends AppCompatActivity implements SongAdapter.ItemClickListener {
+public class AlbumsActivity extends AppCompatActivity implements PlaylistAdapter.ItemClickListener {
 
     private ArrayList<Song> mSongs;
     private ArrayList<Song> mArtistNameResult;
@@ -79,8 +79,8 @@ public class AlbumsActivity extends AppCompatActivity implements SongAdapter.Ite
         recyclerView.setHasFixedSize(true);
 
         // The SongAdapter is responsible for displaying each item in the list
-        SongAdapter songAdapter = new SongAdapter(this, mArtistNameResult, this);
-        recyclerView.setAdapter(songAdapter);
+        PlaylistAdapter playlistAdapter = new PlaylistAdapter(this, mArtistNameResult, this);
+        recyclerView.setAdapter(playlistAdapter);
 
         // Navigate with the app icon in the action bar
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
