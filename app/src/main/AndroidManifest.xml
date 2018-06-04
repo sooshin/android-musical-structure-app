@@ -23,6 +23,9 @@
         <activity
             android:name=".activity.NowplayingActivity"
             android:label="@string/now_playing">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+            </intent-filter>
         </activity>
         <activity
             android:name=".activity.SongsActivity"
