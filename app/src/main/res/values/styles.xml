@@ -21,23 +21,6 @@
         <item name="android:textColor">@color/tab_text_color</item>
     </style>
 
-    <!-- Style for a TextView in the activity_nowplaying.xml -->
-    <style name="NowPlayingText">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_gravity">center</item>
-        <item name="android:layout_marginLeft">@dimen/layout_margin_left</item>
-        <item name="android:layout_marginRight">@dimen/layout_margin_right</item>
-        <item name="android:fontFamily">sans-serif</item>
-    </style>
-
-    <!-- Style for an ImageButton in the activity_nowplaying.xml -->
-    <style name="ImageButtonStyle">
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_weight">1</item>
-        <item name="android:background">@null</item>
-    </style>
-
     <!-- LinearLayout style in the activity_playlists.xml -->
     <style name="PlaylistLinearLayoutStyle">
         <item name="android:layout_width">match_parent</item>
@@ -59,16 +42,6 @@
         <item name="android:textColor">@android:color/white</item>
     </style>
 
-    <!-- Style for a favorite ImageButton in the activity_playlists.xml -->
-    <style name="ImageButtonStyle_favorite">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_gravity">center</item>
-        <item name="android:layout_marginBottom">@dimen/layout_margin_4</item>
-        <item name="android:layout_marginTop">@dimen/layout_margin_8</item>
-        <item name="android:background">@null</item>
-    </style>
-
     <!-- Style for a TextView in list_item.xml -->
     <style name="ListItemTextViewStyle">
         <item name="android:layout_width">wrap_content</item>
@@ -82,16 +55,6 @@
     <style name="ListItemImageViewStyle">
         <item name="android:layout_width">@dimen/size_list_image</item>
         <item name="android:layout_height">@dimen/size_list_image</item>
-    </style>
-
-    <!-- Style for an ImageView in the activity_nowplaying.xml -->
-    <style name="NowPlayingImageViewStyle">
-        <item name="android:layout_width">@dimen/layout_width</item>
-        <item name="android:layout_height">@dimen/layout_height</item>
-        <item name="android:layout_gravity">center</item>
-        <item name="android:layout_marginBottom">@dimen/layout_margin_bottom</item>
-        <item name="android:layout_marginLeft">@dimen/layout_margin_48</item>
-        <item name="android:layout_marginRight">@dimen/layout_margin_48</item>
     </style>
 
 </resources>
