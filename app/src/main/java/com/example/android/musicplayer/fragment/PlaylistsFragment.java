@@ -64,7 +64,7 @@ public class PlaylistsFragment extends Fragment implements PlaylistAdapter.ItemC
                 R.drawable.ed_sheeran_divide));
         mSongs.add(new Song(getString(R.string.camila_cabello), getString(R.string.havana_album),
                 R.drawable.camila_cabello_havana));
-        mSongs.add(new Song(getString(R.string.imagine_dragones), getString(R.string.evolve),
+        mSongs.add(new Song(getString(R.string.imagine_dragons), getString(R.string.evolve),
                 R.drawable.imagine_dragons_evolve));
         mSongs.add(new Song(getString(R.string.ed_sheeran), getString(R.string.x),
                 R.drawable.ed_sheeran_multiply));

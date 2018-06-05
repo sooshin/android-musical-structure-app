@@ -44,7 +44,7 @@ public class SongsFragment extends Fragment implements SongAdapter.ItemClickList
                 getString(R.string.length_nina), R.drawable.ed_sheeran_multiply));
         mSongs.add(new Song(getString(R.string.havana), getString(R.string.camila_cabello),
                 getString(R.string.length_havana), R.drawable.camila_cabello_havana));
-        mSongs.add(new Song(getString(R.string.thunder), getString(R.string.imagine_dragones),
+        mSongs.add(new Song(getString(R.string.thunder), getString(R.string.imagine_dragons),
                 getString(R.string.length_thunder), R.drawable.imagine_dragons_evolve));
         mSongs.add(new Song(getString(R.string.call_it_what_you_want), getString(R.string.taylor_swift),
                 getString(R.string.length_call_it_what_you_want), R.drawable.taylor_swift_reputation));

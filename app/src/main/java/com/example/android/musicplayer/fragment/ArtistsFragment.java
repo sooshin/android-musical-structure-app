@@ -39,7 +39,7 @@ public class ArtistsFragment extends Fragment implements SongAdapter.ItemClickLi
 
         mSongs.add(new Song(getString(R.string.ed_sheeran), R.drawable.artist_ed_sheeran));
         mSongs.add(new Song(getString(R.string.camila_cabello), R.drawable.artist_camila_cabello));
-        mSongs.add(new Song(getString(R.string.imagine_dragones), R.drawable.artist_imagine_dragons));
+        mSongs.add(new Song(getString(R.string.imagine_dragons), R.drawable.artist_imagine_dragons));
         mSongs.add(new Song(getString(R.string.taylor_swift), R.drawable.artist_taylor_swift));
         mSongs.add(new Song(getString(R.string.maroon_5), R.drawable.artist_maroon5));
         mSongs.add(new Song(getString(R.string.portugal_the_man), R.drawable.artist_portugal_the_man));
