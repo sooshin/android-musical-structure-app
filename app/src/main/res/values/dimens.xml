@@ -30,15 +30,6 @@
     <!-- Layout width of ImageView in the activity_playlists.xml -->
     <dimen name="playlist_image_layout_width">66dp</dimen>
 
-    <!-- Column width of grid view -->
-    <dimen name="column_width">170dp</dimen>
-
-    <!-- Horizontal spacing of grid view -->
-    <dimen name="horizontal_spacing">10dp</dimen>
-
-    <!-- Vertical spacing of grid view -->
-    <dimen name="verticalSpacing">10dp</dimen>
-
     <!-- Layout margin in activity_nowplaying -->
     <dimen name="margin_nowplaying">8dp</dimen>
 
@@ -61,14 +52,5 @@
 
     <!-- LinearLayout in activity_nowplaying.xml -->
     <dimen name="padding_50">50dp</dimen>
-
-    <!-- Grid item in grid_item.xml -->
-    <dimen name="grid_layout_width">170dp</dimen>
-    <dimen name="grid_layout_height">170dp</dimen>
-    <dimen name="grid_layout_margin_bottom">4dp</dimen>
-    <dimen name="grid_layout_margin_left">8dp</dimen>
-    <dimen name="grid_layout_margin_right">8dp</dimen>
-    <dimen name="grid_padding">5dp</dimen>
-    <dimen name="grid_layout_height_230">230dp</dimen>
 
 </resources>
