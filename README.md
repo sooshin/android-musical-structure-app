@@ -1,6 +1,35 @@
 # Musical Structure App
 Project as a part of Android Basics Nanodegree at Udacity
 
+## Project Overview
+This project is a chance for you to combine and practice everything you learned so far in this section of the Nanodegree program. You will be making the structure of a music app using Intents, New Activities, Arraylists, Loops and Custom Classes.
+
+The goal is to design and layout the flow for the structure of a Music Player app. Note that for this project, the app does not actually need to play music.
+
+## Why this Project?
+In the last portion of the Nanodegree program, you learned how to think about the structure of an app and how to use OnClickListeners and explicit Intents to link between different activities within your own app. You also learned how to loop through an ArrayList to retrieve and display information to a ListView. Practicing these skills will drastically improve the quality of the apps you build down the road.
+
+## What I learned
+* Designing an app experience to achieve a certain goal
+* Creating new activities
+* Using explicit Intents to link between activities in your app
+* Using OnClickListeners to add behavior to buttons using Java code
+* Creating your own Custom Class
+* Looping through an ArrayList
+* Populating a ListView or GridView with an ArrayAdapter
+
+## Added Features
+* Using a RecyclerView instead of a ListView
+* Using a Room to store the title, artist, and album art of the user's favorite music
+
+## Video
+If you want to see a video demonstrating the app, click [here](https://youtu.be/EOsDRUmdYhk).
+
+## Screenshot
+<img src="screenshots/musical_structure_main.png" width="30%" />
+
+
+
 ```
 MIT License
 
