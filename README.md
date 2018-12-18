@@ -22,9 +22,6 @@ In the last portion of the Nanodegree program, you learned how to think about th
 * Using a RecyclerView instead of a ListView
 * Using a Room to store the title, artist, and album art of the user's favorite music
 
-## Video
-Here is the link to view a video demonstrating the app: https://youtu.be/EOsDRUmdYhk
-
 ## Screenshot
 <img src="screenshots/musical_structure_main.png" width="30%" />
 
